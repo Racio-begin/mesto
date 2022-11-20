@@ -1,0 +1,11 @@
+.profile__btn_action_add {
+  flex: none;
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../../images/icons/profile-btn-add.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
