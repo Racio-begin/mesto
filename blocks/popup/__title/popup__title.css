@@ -1,6 +1,9 @@
-.element__place {
+.popup__title {
   font-family: "Inter", "Arial ", sans-serif;
-  font-weight: 900;
   font-size: 24px;
+  font-weight: 900;
   line-height: 29px;
+  margin: 0;
+  margin-bottom: 54px;
+  padding: 0;
 }

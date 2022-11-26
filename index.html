@@ -39,48 +39,48 @@
 
     <section class="elements content__elements green-line">
 
-      <article class="element elements__element">
-        <img src="./images/places/egor-myznik-dkD7RGfg0sI-unsplash_Koyonsaari, Republic of Karelia, Russia.jpg" alt="Карелия">
-        <figcapture>
+      <article class="element elements__element green-line">
+        <img class="element__image" src="./images/places/egor-myznik-dkD7RGfg0sI-unsplash_Koyonsaari, Republic of Karelia, Russia.jpg" alt="Карелия">
+        <figcapture class="element__description">
           <p class="element__place">Карелия</p>
-          <img class="element__image" src="./images/Heart_deactive.svg" alt="неактивное сердечко">
-        </figcapture>
-      </article>
-
-      <article class="element elements__element">
-        <img src="./images/places/pavel-neznanov-7e-qJInsoc4-unsplash_Olkhon Island, Иркутская область, Россия.jpg" alt="Остров Ольхон">
-        <figcapture>
-          <p class="element__place">Остров Ольхон</p>
           <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
         </figcapture>
       </article>
 
-      <article class="element elements__element">
-        <img src="./images/places/roman-purtov-v5LhHtIeCvI-unsplash_Sheregesh, Кемеровская область, Россия.jpg" alt="Шерегеш">
+      <article class="element elements__element green-line">
+        <img class="element__image" src="./images/places/65_o.jpg" alt="Долина Оюнсу">
+        <figcapture>
+          <p class="element__place">Долина Оюнсу</p>
+          <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
+        </figcapture>
+      </article>
+
+      <article class="element elements__element green-line">
+        <img class="element__image" src="./images/places/roman-purtov-v5LhHtIeCvI-unsplash_Sheregesh, Кемеровская область, Россия.jpg" alt="Шерегеш">
         <figcapture>
           <p class="element__place">Шерегеш</p>
           <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
         </figcapture>
       </article>
         
-      <article class="element elements__element">
-        <img src="./images/places/sergey-pesterev-GYIxdUFEkX8-unsplash_Olkhon Island, Иркутская область, Россия.jpg" alt="Остров Ольхон">
+      <article class="element elements__element green-line">
+        <img class="element__image" src="./images/places/sergey-pesterev-GYIxdUFEkX8-unsplash_Olkhon Island, Иркутская область, Россия.jpg" alt="Остров Ольхон">
         <figcapture>
           <p class="element__place">Остров Ольхон</p>
           <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
         </figcapture>
       </article>
       
-      <article class="element elements__element">
-        <img src="./images/places/sergey-pesterev-lGMufbnB87A-unsplash_Ogoy Island, Иркутская область, Россия.jpg" alt="Остров Огой">
+      <article class="element elements__element green-line">
+        <img class="element__image" src="./images/places/sergey-pesterev-lGMufbnB87A-unsplash_Ogoy Island, Иркутская область, Россия.jpg" alt="Остров Огой">
         <figcapture>
           <p class="element__place">Остров Огой</p>
           <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
         </figcapture>
       </article>
       
-      <article class="element elements__element">
-        <img src="./images/places/sergey-sukhov-FyvPUBVNaCU-unsplash.jpg" alt="Карелия">
+      <article class="element elements__element green-line">
+        <img class="element__image" src="./images/places/sergey-sukhov-FyvPUBVNaCU-unsplash.jpg" alt="Карелия">
         <figcapture>
           <p class="element__place">Карелия</p>
           <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
@@ -94,6 +94,19 @@
   <footer class="footer green-line">
     <p class="footer__copyright">&copy;2022&nbsp;Mesto&nbsp;Russia</p>
   </footer>
+
+  <!------     POPUP     ------>
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__close-btn"></button>
+      <div class="popup__content">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input class="popup__username popup__input" type="text" placeholder="Введите ваше имя">
+        <input class="popup__description popup__input" type="text" placeholder="Введите информацию о себе">
+        <button class="popup__save-btn">Сохранить</button>
+      </div>
+    </div>
+  </section>
 
 <script src="./script.js"></script>
 </body>
