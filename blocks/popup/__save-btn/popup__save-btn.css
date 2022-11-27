@@ -9,9 +9,19 @@
   min-height: 50px;
   cursor: pointer;
   border-radius: 2px;
-  transition: 0.25s ease-in;
+  transition: .25s ease-in;
 }
 
 .popup__save-btn:hover {
   opacity: .8;
+}
+
+@media screen and (max-width: 568px) {
+  .popup__save-btn {
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 0;
+    max-width: 238px;
+    min-height: 46px;
+  }
 }

@@ -3,3 +3,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+@media screen and (max-width: 984px) {
+  .profile__username-container {
+    justify-content: space-between;
+  }
+}

@@ -1,19 +1,25 @@
 .profile__btn_action_edit {
   flex: none;
-  /* position: static; */
   width: 24px;
   height: 24px;
-  margin-left: 16px;
-  margin-bottom: 3px;
-  border: 1px solid #fff;
   background-image: url(../../../../images/icons/profile-btn-edit.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 10px 10px;
   background-color: #000;
-  transition: all 0.5s ease;
+  border: 1px solid #fff;
+  margin-left: 16px;
+  margin-bottom: 3px;
+  transition: all .5s ease;
 }
 
-.profile__btn_action_edit:enabled:hover {
-  opacity: 0.6;
+.profile__btn_action_edit:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 984px) {
+  .profile__btn_action_edit {
+    width: 18px;
+    height: 18px;
+  }
 }

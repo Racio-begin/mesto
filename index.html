@@ -5,85 +5,79 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сайт с фотографиями из красивейших мест России">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto</title>
+  <title>Mesto Russia</title>
 </head>
 
-<body class="page green-line">
+<body class="page">
 
-  <header class="header page__header green-line">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта Mesto">
+  <header class="header page__header">
+    <img class="header__logo" src="./images/header-logo.svg" alt="Логотип сайта Mesto Russia">
   </header>
 
-  <main class="content page__content green-line">
+  <main class="content page__content">
 
     <section class="profile content__profile">
       <div class="profile__content">
-
         <img class="profile__avatar" src="./images/Jacques-Yves Cousteau.jpg" alt="Фотография Жака Ив-Кусто">
-
         <div class="profile__info">
           <div class="profile__username-container">
-            <h1 class="profile__username">Никита</h1>
+            <h1 class="profile__username">Жак-Ив Кусто</h1>
             <button class="profile__btn profile__btn_action_edit"></button>
           </div>
-                    
-        <p class="profile__description">В поисках простого кода</p>
-          
+          <p class="profile__description">Исследователь океана</p>
         </div>
-        
       </div>
-
       <button class="profile__btn profile__btn_action_add"></button>
     </section>
+    <section class="elements content__elements">
 
-    <section class="elements content__elements green-line">
-
-      <article class="element elements__element green-line">
+      <article class="element elements__element">
         <img class="element__image" src="./images/places/egor-myznik-dkD7RGfg0sI-unsplash_Koyonsaari, Republic of Karelia, Russia.jpg" alt="Карелия">
         <figcapture class="element__description">
           <p class="element__place">Карелия</p>
-          <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
+          <button class="element__like"></button>
         </figcapture>
       </article>
 
-      <article class="element elements__element green-line">
+      <article class="element elements__element">
         <img class="element__image" src="./images/places/65_o.jpg" alt="Долина Оюнсу">
-        <figcapture>
+        <figcapture class="element__description">
           <p class="element__place">Долина Оюнсу</p>
-          <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
+          <button class="element__like"></button>
         </figcapture>
       </article>
 
-      <article class="element elements__element green-line">
+      <article class="element elements__element">
         <img class="element__image" src="./images/places/roman-purtov-v5LhHtIeCvI-unsplash_Sheregesh, Кемеровская область, Россия.jpg" alt="Шерегеш">
-        <figcapture>
+        <figcapture class="element__description">
           <p class="element__place">Шерегеш</p>
-          <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
+          <button class="element__like"></button>
         </figcapture>
       </article>
         
-      <article class="element elements__element green-line">
+      <article class="element elements__element">
         <img class="element__image" src="./images/places/sergey-pesterev-GYIxdUFEkX8-unsplash_Olkhon Island, Иркутская область, Россия.jpg" alt="Остров Ольхон">
-        <figcapture>
+        <figcapture class="element__description">
           <p class="element__place">Остров Ольхон</p>
-          <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
+          <button class="element__like"></button>
         </figcapture>
       </article>
       
-      <article class="element elements__element green-line">
+      <article class="element elements__element">
         <img class="element__image" src="./images/places/sergey-pesterev-lGMufbnB87A-unsplash_Ogoy Island, Иркутская область, Россия.jpg" alt="Остров Огой">
-        <figcapture>
+        <figcapture class="element__description">
           <p class="element__place">Остров Огой</p>
-          <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
+          <button class="element__like"></button>
         </figcapture>
       </article>
       
-      <article class="element elements__element green-line">
+      <article class="element elements__element">
         <img class="element__image" src="./images/places/sergey-sukhov-FyvPUBVNaCU-unsplash.jpg" alt="Карелия">
-        <figcapture>
+        <figcapture class="element__description">
           <p class="element__place">Карелия</p>
-          <img src="./images/Heart_deactive.svg" alt="неактивное сердечко">
+          <button class="element__like"></button>
         </figcapture>
       </article>
       
@@ -91,7 +85,7 @@
 
   </main>
 
-  <footer class="footer green-line">
+  <footer class="footer page__footer">
     <p class="footer__copyright">&copy;2022&nbsp;Mesto&nbsp;Russia</p>
   </footer>
 
@@ -99,16 +93,16 @@
   <section class="popup">
     <div class="popup__container">
       <button class="popup__close-btn"></button>
-      <div class="popup__content">
+      <form class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input class="popup__username popup__input" type="text" placeholder="Введите ваше имя">
         <input class="popup__description popup__input" type="text" placeholder="Введите информацию о себе">
         <button class="popup__save-btn">Сохранить</button>
-      </div>
+      </form>
     </div>
   </section>
 
-<script src="./script.js"></script>
+<script src="./scripts/script.js"></script>
 </body>
 
 </html>
