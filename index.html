@@ -8,7 +8,7 @@
   <meta name="author" content="Аверьянов Никита">
   <meta name="description" content="Сайт с фотографиями из красивейших мест России">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Mesto Russia</title>
+  <title lang="en">Mesto Russia</title>
 </head>
 
 <body class="page">
@@ -17,93 +17,109 @@
     <img class="header__logo" src="./images/header-logo.svg" alt="Логотип сайта Mesto Russia">
   </header>
 
-  <main class="content page__content">
+  <main class="content">
 
-    <section class="profile content__profile">
+    <section class="profile">
       <div class="profile__content">
-        <img class="profile__avatar" src="./images/Jacques-Yves Cousteau.jpg" alt="Фотография Жака Ив-Кусто">
+        <img class="profile__avatar" src="./images/Jacques-Yves_Cousteau.jpg" alt="Фотография пользователя">
         <div class="profile__info">
-          <div class="profile__username-container">
-            <h1 class="profile__username">Жак-Ив Кусто</h1>
-            <button class="profile__btn profile__btn_action_edit"></button>
-          </div>
+          <h1 class="profile__username">Жак-Ив Кусто</h1>
+          <button class="profile__button-edit button" type="button" aria-label="Редактировать информацию в профиле"></button>
           <p class="profile__description">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__btn profile__btn_action_add"></button>
+      <button class="profile__button-add button" type="button" aria-label="Добавить фотографии"></button>
     </section>
-    <section class="elements content__elements">
 
-      <article class="element elements__element">
-        <img class="element__image" src="./images/places/pexels-mary-10800243.jpg" alt="Карелия">
-        <figcapture class="element__description">
-          <p class="element__place">Карелия</p>
-          <button class="element__like"></button>
-        </figcapture>
-      </article>
+    <section class="elements">
 
-      <article class="element elements__element">
-        <img class="element__image" src="./images/places/65_o.jpg" alt="Долина Оюнсу">
-        <figcapture class="element__description">
-          <p class="element__place">Долина Оюнсу</p>
-          <button class="element__like"></button>
-        </figcapture>
-      </article>
+      <ul class="elements__content">
 
-      <article class="element elements__element">
-        <img class="element__image" src="./images/places/pexels-nadezhda-moryak-6704324.jpg" alt="Байкал>">
-        <figcapture class="element__description">
-          <p class="element__place">Байкал</p>
-          <button class="element__like"></button>
-        </figcapture>
-      </article>
+        <li>
+          <article class="elements__element">
+            <img class="elements__image" src="./images/places/pexels-mary-10800243.jpg" alt="Пирс у озера в Карелии">
+            <div class="elements__description">
+              <h2 class="elements__place">Карелия</h2>
+              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
+            </div>
+          </article>
+        </li>
+
+        <li>
+          <article class="elements__element">
+            <img class="elements__image" src="./images/places/65_o.jpg" alt="Подножье храма в Долине Оюнсу">
+            <div class="elements__description">
+              <h2 class="elements__place">Долина Оюнсу</h2>
+              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
+            </div>
+          </article>
+        </li>
+
+        <li>
+          <article class="elements__element">
+            <img class="elements__image" src="./images/places/pexels-nadezhda-moryak-6704324.jpg" alt="Зимняя фотография Байкала>">
+            <div class="elements__description">
+              <h2 class="elements__place">Байкал</h2>
+              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
+            </div>
+          </article>
+        </li>
+          
+        <li>
+          <article class="elements__element">
+            <img class="elements__image" src="./images/places/pexels-kindel-media-8824651.jpg" alt="Тумманый берег острова Ольхон">
+            <div class="elements__description">
+              <h2 class="elements__place">Остров Ольхон</h2>
+              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
+            </div>
+          </article>
+        </li>
         
-      <article class="element elements__element">
-        <img class="element__image" src="./images/places/pexels-kindel-media-8824651.jpg" alt="Остров Ольхон">
-        <figcapture class="element__description">
-          <p class="element__place">Остров Ольхон</p>
-          <button class="element__like"></button>
-        </figcapture>
-      </article>
-      
-      <article class="element elements__element">
-        <img class="element__image" src="./images/places/pexels-alexander-popovkin-14146651.jpg" alt="Тайга">
-        <figcapture class="element__description">
-          <p class="element__place">Тайга</p>
-          <button class="element__like"></button>
-        </figcapture>
-      </article>
-      
-      <article class="element elements__element">
-        <img class="element__image" src="./images/places/pexels-vadim-lu-14543631.jpg" alt="Карелия">
-        <figcapture class="element__description">
-          <p class="element__place">Карелия</p>
-          <button class="element__like"></button>
-        </figcapture>
-      </article>
+        <li>
+          <article class="elements__element">
+            <img class="elements__image" src="./images/places/pexels-alexander-popovkin-14146651.jpg" alt="Лесная дорога в снежной тайге">
+            <div class="elements__description">
+              <h2 class="elements__place">Тайга</h2>
+              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
+            </div>
+          </article>
+        </li>
+        
+        <li>
+          <article class="elements__element">
+            <img class="elements__image" src="./images/places/pexels-vadim-lu-14543631.jpg" alt="Деревяный храм на острове в Карелии">
+            <div class="elements__description">
+              <h2 class="elements__place">Карелия</h2>
+              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
+            </div>
+          </article>
+        </li>
+
+      </ul>
       
     </section>
 
   </main>
 
   <footer class="footer page__footer">
-    <p class="footer__copyright">&copy;2022&nbsp;Mesto&nbsp;Russia</p>
+    <p class="footer__copyright" lang="en">&copy;2022&nbsp;Mesto&nbsp;Russia</p>
   </footer>
 
   <!------     POPUP     ------>
-  <section class="popup">
+  <div class="popup">
     <div class="popup__container">
-      <button class="popup__close-btn"></button>
-      <form class="popup__content">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__username popup__input" type="text" placeholder="Введите ваше имя">
-        <input class="popup__description popup__input" type="text" placeholder="Введите информацию о себе">
-        <button class="popup__save-btn">Сохранить</button>
+      <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__content" name="popupContent">
+        <input class="popup__input popup__input_type_username" type="text" name="popupInputTypeUsername" placeholder="Введите ваше имя">
+        <input class="popup__input popup__input_type_description" type="text" name="popupInputTypeDescription" placeholder="Введите информацию о себе">
+        <button class="popup__button-save button" type="submit">Сохранить</button>
       </form>
     </div>
-  </section>
+  </div>
 
-<script src="./scripts/script.js"></script>
+<!------     Подключаем скрипт JS     ------>
+<script src="./scripts/script.js" defer></script>
 </body>
 
 </html>

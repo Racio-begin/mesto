@@ -1,0 +1,14 @@
+.elements__button-like {
+  width: 22px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-image: url(./../../../images/icons/like_deactive.svg);
+  background-position: center;
+  background-size: cover;
+  border: none;
+  padding: 0;
+}
+
+.elements__button-like:hover {
+  opacity: .5;
+}

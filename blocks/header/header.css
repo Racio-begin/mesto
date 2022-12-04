@@ -3,7 +3,7 @@
   padding: 0;
   min-height: 33px;
   padding-bottom: 41px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -12,6 +12,6 @@
 
 @media screen and (max-width: 568px) {
   .header {
-    min-height: 64px;
+    padding-bottom: 30px;
   }
 }

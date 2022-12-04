@@ -1,32 +1,25 @@
 //  Найти селекторы в DOM  //
 const popupElement = document.querySelector('.popup');
-const popupOpenButtonElement = document.querySelector('.profile__btn_action_edit');
-const popupCloseButtonElement = popupElement.querySelector('.popup__close-btn');
+const popupOpenButtonElement = document.querySelector('.profile__button-edit');
+const popupCloseButtonElement = popupElement.querySelector('.popup__button-close');
 
 const formElement = popupElement.querySelector('.popup__content');
-const nameInput = popupElement.querySelector('.popup__username');
-const jobInput = popupElement.querySelector('.popup__description');
+const nameInput = popupElement.querySelector('.popup__input_type_username');
+const jobInput = popupElement.querySelector('.popup__input_type_description');
 
 const nameProfile = document.querySelector('.profile__username');
 const jobProfile = document.querySelector('.profile__description');
 
 //  Открыть popup  //
 const openPopup = function () {
-  popupElement.classList.add('popup_is-opened');
+  popupElement.classList.add('popup_opened');
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
 }
 
 //  Закрыть popup  //
 const closePopup = function () {
-  popupElement.classList.remove('popup_is-opened')
-}
-
-//  Закрыть popup по клику вне формы  //
-const closePopupByClickOnOverlay = function (event) {
-  if (event.target === event.currentTarget) {
-    closePopup();
-  }
+  popupElement.classList.remove('popup_opened');
 }
 
 //  Обработчик «отправки» формы, хотя пока она никуда отправляться не будет  //
@@ -40,5 +33,4 @@ function handleFormSubmit(evt) {
 //  Объявить слушателей  //
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
-popupElement.addEventListener('click', closePopupByClickOnOverlay);
 formElement.addEventListener('submit', handleFormSubmit);

@@ -1,6 +1,6 @@
 .popup__content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  row-gap: 30px;
   margin: 34px 36px 37px;
 }
 

@@ -1,9 +1,0 @@
-.content__elements {
-  padding-top: 47px;
-}
-
-@media screen and (max-width: 568px) {
-  .content__elements {
-    padding-top: 36px;
-  }
-}
