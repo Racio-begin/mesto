@@ -61,7 +61,7 @@ const initialCards = [
   }
 ];
 
-// Открыть (закрыть) popup, общая функция
+// Открыть (закрыть) popup, общая функция //
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
