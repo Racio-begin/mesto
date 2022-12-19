@@ -1,0 +1,13 @@
+.elements__button-bin {
+  width: 18px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-image: url(./../../../images/icons/elements__button_bin.svg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  left: 244px;
+  bottom: 262px;
+  border: none;
+  padding: 0;
+}

@@ -32,71 +32,9 @@
     </section>
 
     <section class="elements">
-
       <ul class="elements__content">
 
-        <li>
-          <article class="elements__element">
-            <img class="elements__image" src="./images/places/pexels-mary-10800243.jpg" alt="Пирс у озера в Карелии">
-            <div class="elements__description">
-              <h2 class="elements__place">Карелия</h2>
-              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="elements__element">
-            <img class="elements__image" src="./images/places/65_o.jpg" alt="Подножье храма в Долине Оюнсу">
-            <div class="elements__description">
-              <h2 class="elements__place">Долина Оюнсу</h2>
-              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
-            </div>
-          </article>
-        </li>
-
-        <li>
-          <article class="elements__element">
-            <img class="elements__image" src="./images/places/pexels-nadezhda-moryak-6704324.jpg" alt="Зимняя фотография Байкала>">
-            <div class="elements__description">
-              <h2 class="elements__place">Байкал</h2>
-              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
-            </div>
-          </article>
-        </li>
-          
-        <li>
-          <article class="elements__element">
-            <img class="elements__image" src="./images/places/pexels-kindel-media-8824651.jpg" alt="Тумманый берег острова Ольхон">
-            <div class="elements__description">
-              <h2 class="elements__place">Остров Ольхон</h2>
-              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
-            </div>
-          </article>
-        </li>
-        
-        <li>
-          <article class="elements__element">
-            <img class="elements__image" src="./images/places/pexels-alexander-popovkin-14146651.jpg" alt="Лесная дорога в снежной тайге">
-            <div class="elements__description">
-              <h2 class="elements__place">Тайга</h2>
-              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
-            </div>
-          </article>
-        </li>
-        
-        <li>
-          <article class="elements__element">
-            <img class="elements__image" src="./images/places/pexels-vadim-lu-14543631.jpg" alt="Деревяный храм на острове в Карелии">
-            <div class="elements__description">
-              <h2 class="elements__place">Карелия</h2>
-              <button class="elements__button-like button" type="button" aria-label="Оценить фотографию"></button>
-            </div>
-          </article>
-        </li>
-
       </ul>
-      
     </section>
 
   </main>
@@ -105,21 +43,73 @@
     <p class="footer__copyright" lang="en">&copy;2022&nbsp;Mesto&nbsp;Russia</p>
   </footer>
 
-  <!------     POPUP     ------>
-  <div class="popup">
+  <!------     POPUP редактирования профиля    ------>
+  <div class="popup popup_edit-profile">
     <div class="popup__container">
       <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__content" name="popupContent">
-        <input class="popup__input popup__input_type_username" type="text" name="popupInputTypeUsername" placeholder="Введите ваше имя">
-        <input class="popup__input popup__input_type_description" type="text" name="popupInputTypeDescription" placeholder="Введите информацию о себе">
+      <form class="popup__content" name="formEditProfile" id="formEditProfile">
+        <input
+          class="popup__input popup__input_type_username"
+          type="text"
+          name="popupInputTypeUsername"
+          placeholder="Введите ваше имя">
+        <input
+          class="popup__input popup__input_type_description"
+          type="text"
+          name="popupInputTypeDescription"
+          placeholder="Введите информацию о себе">
         <button class="popup__button-save button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
 
+  <!------     POPUP добавления карточки    ------>
+  <div class="popup popup_add-card">
+    <div class="popup__container">
+      <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__content" name="formAddCard" id="formAddCard">
+        <input
+          class="popup__input popup__input_type_title"
+          type="text"
+          name="popupInputTypeTitle"
+          placeholder="Название">
+        <input
+          class="popup__input popup__input_type_link"
+          type="url"
+          name="popupInputTypeLink"
+          placeholder="Ссылка на картинку">
+        <button class="popup__button-save button" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <!------     POPUP открытия карточки    ------>
+  <div class="popup popup_image">
+    <div class="popup__container-image">
+      <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
+      <img class="popup__photo" src="" alt="">
+      <h3 class="popup__title-photo"></h3>
+    </div>
+  </div>
+</main>
+
+<!------     Шаблон карточки    ------>
+<template id="elements__template">
+  <li class="elements__element">
+    <img class="elements__image" src="#" alt="">
+    <button class="elements__button-bin button" type="button" aria-label="Удалить место"></button>
+    <div class="elements__description">
+      <h2 class="elements__place"></h2>
+      <button class="elements__button-like button" type="button" aria-label="Оценить место"></button>
+    </div>
+  </li>
+</template>
+
 <!------     Подключаем скрипт JS     ------>
 <script src="./scripts/script.js" defer></script>
+
 </body>
 
 </html>
