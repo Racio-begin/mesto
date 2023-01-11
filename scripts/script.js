@@ -1,6 +1,6 @@
 //  Найти селекторы в DOM  //
 
-const popupElement = document.querySelector('.popup'); // нужен ли? //
+const popup = document.querySelectorAll('.popup');
 const profile = document.querySelector('.profile');
 const content = document.querySelector('.content');
 
@@ -11,8 +11,7 @@ const popupOpenButtonEdit = profile.querySelector('.profile__button-edit');
 const nameInput = formEditProfile.querySelector('.popup__input_type_username');
 const jobInput = formEditProfile.querySelector('.popup__input_type_description');
 const nameProfile = profile.querySelector('.profile__username');
-const jobProfile = profile.querySelector('.profile__description');
-const popupCloseButtonEditProfile = popupEditProfile.querySelector('.popup__button-close');
+const jobProfile = profile.querySelector('.profile__description');;
 
 const cards = document.querySelector('.elements__content');
 const popupAddCard = document.querySelector('.popup_add-card');
@@ -20,46 +19,17 @@ const cardAddButton = profile.querySelector('.profile__button-add');
 const formAddCard = popupAddCard.querySelector('#formAddCard');
 const titleInput = formAddCard.querySelector('.popup__input_type_title');
 const linkInput = formAddCard.querySelector('.popup__input_type_link');
-const popupCloseButtonAddCard = popupAddCard.querySelector('.popup__button-close');
 
 const popupImage = document.querySelector('.popup_image');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const popupImageTitle = popupImage.querySelector('.popup__title-photo');
-const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close');
+
+const closeButtons = document.querySelectorAll('.popup__button-close');
 
 // Шаблоны //
 
 const cardTemplate = document.querySelector('#elements__template').content;
 let newCard = cardTemplate.querySelector('.elements__element');
-
-// Базовый набор карточек //
-
-const initialCards = [
-  {
-    title: 'Карелия',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    title: 'Долина Оюнсу',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    title: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    title: 'Остров Ольхон',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    title: 'Тайга',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    title: 'Карелия',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 // Открыть (закрыть) popup, общая функция //
 
@@ -106,13 +76,13 @@ function generateCard(titleName, linkName) {
     openPopupImage(linkName, titleName);
   });
 
-  newCard = cardElement;
+  return cardElement;
 };
 
-for (let i = 0; i < initialCards.length; i++) {
-  generateCard(initialCards[i].title, initialCards[i].link);
+initialCards.forEach((card) => {
+  const newCard = generateCard(card.title, card.link);
   addCard(newCard);
-};
+});
 
 // Добавить карточку
 
@@ -150,7 +120,7 @@ function openPopupImage(linkName, titleName) {
 // Установить слушатели //
 
 // Редактировать профиль
-popupCloseButtonEditProfile.addEventListener('click', popupEditProfileClose);
+
 formEditProfile.addEventListener('submit', handleFormSubmit);
 
 // Открыть (закрыть) popup профиля
@@ -164,8 +134,6 @@ function popupImageClose() {
   closePopup(popupImage);
 };
 
-popupCloseButtonOpenImage.addEventListener('click', popupImageClose);
-
 // Добавить карточки
 
 formAddCard.addEventListener('submit', submitAddCardsForm);
@@ -174,4 +142,25 @@ cardAddButton.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 
-popupCloseButtonAddCard.addEventListener('click', popupAddCardClose);
+// Универсальная функция закрытия попапов
+
+closeButtons.forEach((button) => { 
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
+
+// Валидировать формы //
+
+// включение валидации вызовом enableValidation
+// все настройки передаются при вызове
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
+enableValidation(validationConfig);
