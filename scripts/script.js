@@ -1,7 +1,7 @@
 //  Найти селекторы в DOM  // 
 
  
-const popupElement = document.querySelector('.popup'); // нужен ли? // 
+const popupElement = document.querySelectorAll('.popup');
 const profile = document.querySelector('.profile'); 
 const content = document.querySelector('.content'); 
 
@@ -166,6 +166,16 @@ cardAddButton.addEventListener('click', () => {
 }); 
 
 popupCloseButtonAddCard.addEventListener('click', popupAddCardClose);
+
+// Закрыть на оверлей
+
+popupElement.forEach((popup) => {
+  popup.addEventListener('click', function (evt) {
+    if (evt.target.classList.contains('popup')) {
+      closePopup(popup);
+    }
+  });
+});
 
 // включение валидации вызовом enableValidation
 // все настройки передаются при вызове
