@@ -1,0 +1,18 @@
+.popup__input-error {
+  font-size: 12px;
+  line-height: 14px;
+  color: #ff0000;
+  display: block;
+  margin: 4px 0 0 6px;
+  box-sizing: border-box;
+  height: 35px;
+}
+
+/* .popup__input-error {
+  font-size: 12px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  color: #FF0000;
+  font-weight: 400;
+  margin: 0;
+  height: 27px;
+} */

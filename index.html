@@ -40,7 +40,7 @@
   </main>
 
   <footer class="footer page__footer">
-    <p class="footer__copyright" lang="en">&copy;2022&nbsp;Mesto&nbsp;Russia</p>
+    <p class="footer__copyright" lang="en">&copy;2023&nbsp;Mesto&nbsp;Russia</p>
   </footer>
 
   <!------     POPUP редактирования профиля    ------>
@@ -48,18 +48,25 @@
     <div class="popup__container">
       <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="formEditProfile" id="formEditProfile">
+      <form class="popup__form" name="formEditProfile" id="formEditProfile" novalidate>
         <input
           class="popup__input popup__input_type_username"
           type="text"
           name="popupInputTypeUsername"
-          placeholder="Введите ваше имя">
-        <span class="popup__input_type_username-error"></span>
+          id="username"
+          placeholder="Введите ваше имя"
+          minlength="2" maxlength="40"
+          required>
+        <span class="username-error popup__input-error"></span>
         <input
           class="popup__input popup__input_type_description"
           type="text"
           name="popupInputTypeDescription"
-          placeholder="Введите информацию о себе">
+          id="description"
+          placeholder="Введите информацию о себе"
+          minlength="2" maxlength="200"
+          required>
+          <span class="description-error popup__input-error"></span>
         <button class="popup__button-save button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -70,17 +77,24 @@
     <div class="popup__container">
       <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form" name="formAddCard" id="formAddCard">
+      <form class="popup__form" name="formAddCard" id="formAddCard" novalidate>
         <input
           class="popup__input popup__input_type_title"
           type="text"
           name="popupInputTypeTitle"
-          placeholder="Название">
+          id="title"
+          placeholder="Название"
+          minlength="2" maxlength="30"
+          required>
+          <span class="title-error popup__input-error"></span>
         <input
           class="popup__input popup__input_type_link"
           type="url"
           name="popupInputTypeLink"
-          placeholder="Ссылка на картинку">
+          id="link"
+          placeholder="Ссылка на картинку"
+          required>
+          <span class="link-error popup__input-error"></span>
         <button class="popup__button-save button" type="submit">Создать</button>
       </form>
     </div>
@@ -110,8 +124,8 @@
 
   <!------     Подключаем скрипты JS     ------>
 
-  <script src="./scripts/cards.js" defer></script>
-  <script src="./scripts/validate.js" defer></script>
+  <script src="./scripts/cards.js"></script>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/script.js" defer></script>
   
 </body>
