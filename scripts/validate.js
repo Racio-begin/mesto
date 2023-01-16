@@ -15,7 +15,7 @@ function hideInputError(formElement, inputElement, config) {
 }
 
 function checkInputValidity(formElement, inputElement, config) { // проверить валидность
-  if (inputElement.validity.valid) {  
+  if (inputElement.validity.valid) {
     hideInputError(formElement, inputElement, config); // спрятать ошибку, если валидно
   } else {
     showInputError(formElement, inputElement, config); // показать ошибку, если невалидно
@@ -39,7 +39,7 @@ function toggleButtonState(inputList, buttonElement, config) {
 function setEventListeners(formElement, config) {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector)); // получить все инпуты
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
-    
+
   toggleButtonState(inputList, buttonElement, config); // отключить кнопку отправки при пустых полях при загрузке сайта
 
   inputList.forEach((inputElement) => { // вешаем обработчик на каждый инпут
