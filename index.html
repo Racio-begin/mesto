@@ -46,7 +46,7 @@
   <!------     POPUP редактирования профиля    ------>
   <div class="popup popup_edit-profile">
     <div class="popup__container">
-      <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
+      <button class="button popup__button-close" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="formEditProfile" id="formEditProfile" novalidate>
         <input
@@ -67,7 +67,7 @@
           minlength="2" maxlength="200"
           required>
           <span class="description-error popup__input-error"></span>
-        <button class="popup__button-save button" type="submit">Сохранить</button>
+        <button class="button popup__button-save" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
@@ -75,7 +75,7 @@
   <!------     POPUP добавления карточки    ------>
   <div class="popup popup_add-card">
     <div class="popup__container">
-      <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
+      <button class="button popup__button-close" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="formAddCard" id="formAddCard" novalidate>
         <input
@@ -95,7 +95,7 @@
           placeholder="Ссылка на картинку"
           required>
           <span class="link-error popup__input-error"></span>
-        <button class="popup__button-save button" type="submit">Создать</button>
+        <button class="button popup__button-save" type="submit">Создать</button>
       </form>
     </div>
   </div>
@@ -103,21 +103,20 @@
   <!------     POPUP открытия карточки    ------>
   <div class="popup popup_image">
     <div class="popup__container-image">
-      <button class="popup__button-close button" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
+      <button class="button popup__button-close" name="popupCloseButton" type="button" aria-label="Закрыть окно"></button>
       <img class="popup__photo" src="#" alt="">
       <h3 class="popup__title-photo"></h3>
     </div>
   </div>
 
-
   <!------     Шаблон карточки    ------>
   <template id="elements__template">
     <li class="elements__element">
       <img class="elements__image" src="#" alt="">
-      <button class="elements__button-bin button" type="button" aria-label="Удалить место"></button>
+      <button class="button elements__button-bin" type="button" aria-label="Удалить место"></button>
       <div class="elements__description">
         <h2 class="elements__place"></h2>
-        <button class="elements__button-like button" type="button" aria-label="Оценить место"></button>
+        <button class="button elements__button-like" type="button" aria-label="Оценить место"></button>
       </div>
     </li>
   </template>
