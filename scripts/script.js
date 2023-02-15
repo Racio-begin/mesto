@@ -85,10 +85,13 @@ function popupEditProfileClose() {
 
 // Создать карточку 
 
-
 function deleteCard (event) {
   const card = event.target.closest('.elements__element');
   card.remove();
+};
+
+function likeCard (event) {
+  event.target.classList.toggle('elements__button-like_active');
 };
 
 function generateCard(titleName, linkName) {
@@ -99,10 +102,7 @@ function generateCard(titleName, linkName) {
 
   cardElement.querySelector('.elements__place').textContent = titleName;
 
-  cardElement.querySelector('.elements__button-like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('elements__button-like_active');
-  });
-  
+  cardElement.querySelector('.elements__button-like').addEventListener('click', likeCard);
   cardElement.querySelector('.elements__button-bin').addEventListener('click', deleteCard);
 
   cardElement.querySelector('.elements__image').addEventListener('click', () => {
