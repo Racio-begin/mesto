@@ -30,12 +30,9 @@ const popupImageTitle = popupImage.querySelector('.popup__title-photo');
 const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close');
 
 
-// Шаблоны // 
-
+// Шаблон карточки // 
 
 const cardTemplate = document.querySelector('#elements__template').content;
-let newCard = cardTemplate.querySelector('.elements__element');
-
 
 // Функции отрытия/закрытия попапов // 
 
@@ -108,18 +105,19 @@ function generateCard(titleName, linkName) {
     openPopupImage(linkName, titleName);
   });
 
-  newCard = cardElement;
+  return cardElement;
 };
 
-for (let i = 0; i < initialCards.length; i++) {
-  generateCard(initialCards[i].title, initialCards[i].link);
+initialCards.forEach((dataCard) => {
+  const newCard = generateCard(dataCard.title, dataCard.link);
   addCard(newCard);
-};
+});
+
 
 // Добавить карточку 
 
-function addCard(newCard) {
-  cards.prepend(newCard);
+function addCard(dataCard) {
+  cards.prepend(dataCard);
 };
 
 // Получить данные карточки 
