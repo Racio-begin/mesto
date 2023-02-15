@@ -85,21 +85,24 @@ function popupEditProfileClose() {
 
 // Создать карточку 
 
-function deleteCard (event) {
-  const card = event.target.closest('.elements__element');
-  card.remove();
+// function deleteCard (event) {
+//   const card = event.target.closest('.elements__element');
+//   card.remove();
+// };
+
+const deleteCard = (event) => {
+  event.target.closest('.elements__element').remove();
 };
 
 function likeCard (event) {
   event.target.classList.toggle('elements__button-like_active');
 };
 
-function generateCard(titleName, linkName) {
+function createCard(titleName, linkName) {
   const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
   const elementPhoto = cardElement.querySelector('.elements__image');
   elementPhoto.src = linkName;
   elementPhoto.alt = titleName;
-
   cardElement.querySelector('.elements__place').textContent = titleName;
 
   cardElement.querySelector('.elements__button-like').addEventListener('click', likeCard);
@@ -112,8 +115,10 @@ function generateCard(titleName, linkName) {
   return cardElement;
 };
 
+//
+
 initialCards.forEach((dataCard) => {
-  const newCard = generateCard(dataCard.title, dataCard.link);
+  const newCard = createCard(dataCard.title, dataCard.link);
   addCard(newCard);
 });
 
@@ -132,7 +137,7 @@ function submitAddCardsForm(evt) {
   const linkName = linkInput.value;
   popupAddCardClose();
 
-  generateCard(titleName, linkName);
+  createCard(titleName, linkName);
 
   addCard(dataCard);
 
