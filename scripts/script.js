@@ -16,7 +16,8 @@ const nameProfile = profile.querySelector('.profile__username');
 const jobProfile = profile.querySelector('.profile__description');
 const popupCloseButtonEditProfile = popupEditProfile.querySelector('.popup__button-close');
 
-const cards = document.querySelector('.elements__content');
+const cards = document.querySelector('.elements');
+const cardsContent = document.querySelector('.elements__content');
 const popupAddCard = document.querySelector('.popup_add-card');
 const cardAddButton = profile.querySelector('.profile__button-add');
 const formAddCard = popupAddCard.querySelector('#formAddCard');
@@ -90,7 +91,7 @@ function popupEditProfileClose() {
 //   card.remove();
 // };
 
-const deleteCard = (event) => {
+function deleteCard (event) {
   event.target.closest('.elements__element').remove();
 };
 
@@ -101,6 +102,7 @@ function likeCard (event) {
 function createCard(titleName, linkName) {
   const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
   const elementPhoto = cardElement.querySelector('.elements__image');
+
   elementPhoto.src = linkName;
   elementPhoto.alt = titleName;
   cardElement.querySelector('.elements__place').textContent = titleName;
@@ -117,35 +119,46 @@ function createCard(titleName, linkName) {
 
 //
 
-initialCards.forEach((dataCard) => {
-  const newCard = createCard(dataCard.title, dataCard.link);
-  addCard(newCard);
-});
+// initialCards.forEach((dataCard) => {
+//   const newCard = createCard(dataCard.title, dataCard.link);
+//   addCard(newCard);
+// });
 
+initialCards.forEach(function (item) {
+  addCard(cardsContent, createCard(item.title, item.link));
+}
+);
 
 // Добавить карточку 
 
-function addCard(dataCard) {
-  cards.prepend(dataCard);
-};
+// function addCard(dataCard) {
+//   cards.prepend(dataCard);
+// };
+
+function addCard(container, dataCard) {
+  container.prepend(dataCard);
+}
 
 // Получить данные карточки 
 
-function submitAddCardsForm(evt) {
-  evt.preventDefault();
-  const titleName = titleInput.value;
-  const linkName = linkInput.value;
+// function submitAddCardsForm(evt) {
+//   evt.preventDefault();
+//   const titleName = titleInput.value;
+//   const linkName = linkInput.value;
+//   popupAddCardClose();
+//   createCard(titleName, linkName);
+//   // addCard(dataCard);
+//   titleInput.value = '';
+//   linkInput.value = '';
+
+//   // popupAddCardClose();
+// };
+
+function submitAddCardsForm (event) {
+  event.preventDefault();
+  addCard(cardsContent, createCard(titleInput.value, linkInput.value));
   popupAddCardClose();
-
-  createCard(titleName, linkName);
-
-  addCard(dataCard);
-
-  titleInput.value = '';
-  linkInput.value = '';
-
-  // popupAddCardClose();
-};
+}
 
 function popupAddCardClose() {
   closePopup(popupAddCard);
