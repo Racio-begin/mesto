@@ -157,8 +157,9 @@ function addCard(container, dataCard) {
 function submitAddCardsForm (event) {
   event.preventDefault();
   addCard(cardsContent, createCard(titleInput.value, linkInput.value));
-  titleInput.value = '';
-  linkInput.value = '';
+  // titleInput.value = '';
+  // linkInput.value = '';
+  event.target.reset();
   popupAddCardClose();
 }
 
