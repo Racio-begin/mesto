@@ -3,8 +3,8 @@
 
 const popupElement = document.querySelectorAll('.popup');
 const formList = document.querySelectorAll('.popup__form');
-const profile = document.querySelector('.profile');
 const content = document.querySelector('.content');
+const profile = content.querySelector('.profile');
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const formEditProfile = popupEditProfile.querySelector('#formEditProfile');
@@ -17,7 +17,7 @@ const jobProfile = profile.querySelector('.profile__description');
 const popupCloseButtonEditProfile = popupEditProfile.querySelector('.popup__button-close');
 
 const cards = document.querySelector('.elements');
-const cardsContent = document.querySelector('.elements__content');
+const cardsContent = cards.querySelector('.elements__content');
 const popupAddCard = document.querySelector('.popup_add-card');
 const cardAddButton = profile.querySelector('.profile__button-add');
 const formAddCard = popupAddCard.querySelector('#formAddCard');
@@ -88,11 +88,11 @@ function popupEditProfileClose() {
 
 // Создать карточку 
 
-function deleteCard (event) {
+function deleteCard(event) {
   event.target.closest('.elements__element').remove();
 };
 
-function likeCard (event) {
+function likeCard(event) {
   event.target.classList.toggle('elements__button-like_active');
 };
 
@@ -116,7 +116,7 @@ function createCard(titleName, linkName) {
 
 initialCards.forEach(function (item) {
   addCard(cardsContent, createCard(item.title, item.link));
-  }
+}
 );
 
 // Добавить карточку 
@@ -127,7 +127,7 @@ function addCard(container, dataCard) {
 
 // Получить данные карточки 
 
-function submitAddCardsForm (event) {
+function submitAddCardsForm(event) {
   event.preventDefault();
   addCard(cardsContent, createCard(titleInput.value, linkInput.value));
   event.target.reset();

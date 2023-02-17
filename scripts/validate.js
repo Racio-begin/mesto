@@ -3,7 +3,7 @@ function showInputError(formElement, inputElement, config) {
 
   errorElement.classList.add(config.errorClass);
   errorElement.textContent = inputElement.validationMessage; // вывести текст ошибки (браузерная)
-  inputElement.classList.add(config.InputErrorClass); // вывести красную обводку инпута
+  inputElement.classList.add(config.InputErrorClass);        // вывести красную обводку инпута
 }
 
 function hideInputError(formElement, inputElement, config) {
@@ -27,10 +27,10 @@ function hasInvalidInput(inputList) {
 }
 
 function toggleButtonState(inputList, buttonElement, config) {
-  if (hasInvalidInput(inputList)) { // отключить кнопку отправки
+  if (hasInvalidInput(inputList)) {                             // отключить кнопку отправки
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
-  } else {
+  } else {                                                      // иначе включить её
     buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
   }
@@ -40,19 +40,19 @@ function setEventListeners(formElement, config) {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector)); // получить все инпуты
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-  toggleButtonState(inputList, buttonElement, config); // отключить кнопку отправки при пустых полях при загрузке сайта
+  toggleButtonState(inputList, buttonElement, config);        // отключить кнопку отправки при пустых полях при загрузке сайта
 
-  inputList.forEach((inputElement) => { // вешаем обработчик на каждый инпут
+  inputList.forEach((inputElement) => {                       // вешаем обработчик на каждый инпут
     inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement, config); // проверить валидность инпута
-      toggleButtonState(inputList, buttonElement, config); // проверить список инпутов на валидность
+      checkInputValidity(formElement, inputElement, config);  // проверить валидность инпута
+      toggleButtonState(inputList, buttonElement, config);    // проверить список инпутов на валидность
     })
   })
 }
 
 function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector)); // получить все формы
-  formList.forEach((formElement) => { // пройтись по всем формам
-    setEventListeners(formElement, config) // установить на них слушатели
+  formList.forEach((formElement) => {                                          // пройтись по всем формам
+    setEventListeners(formElement, config)                                     // установить на них слушатели
   })
 }
