@@ -63,22 +63,15 @@ function closePopup(popup) {
 
 // Закрыть popup, оверлей
 
-// popupList.forEach((popup) => {
-//   popup.addEventListener('click', function (evt) {
-//     if (evt.target.classList.contains('popup')) {
-//       closePopup(popup);
-//     };
-//   });
-// });
-
 popupList.forEach((popup) => {                                                           // итерируем массив. объявляя каждый попап в переменную popup
-  popup.addEventListener('mouseup', (event) => {                                         // на каждый попап устанавливаем слушателя события
-    const targetClassList = event.target.classList;                                      // запишем в переменную класс элемента, на котором произошло событие
+  popup.addEventListener('mouseup', (evt) => {                                         // на каждый попап устанавливаем слушателя события
+    const targetClassList = evt.target.classList;                                      // запишем в переменную класс элемента, на котором произошло событие
     if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) { // проверяем наличие класса попапа ИЛИ кнопки закрытия
       closePopup(popup);                                                                 // если один из классов присутствует, то закрываем попап
     }
   })
 });
+
 
 //*  Обработчик «отправки» формы  *// 
 
@@ -96,34 +89,34 @@ function popupEditProfileClose() {
 
 // Создать карточку 
 
-function deleteCard(event) {
-  event.target.closest('.elements__element').remove();
+function deleteCard(evt) {
+  evt.target.closest('.element').remove();
 };
 
-function likeCard(event) {
-  event.target.classList.toggle('elements__button-like_active');
+function likeCard(evt) {
+  evt.target.classList.toggle('elements__button-like_active');
 };
 
 function createCard(titleName, linkName) {
-  const cardElement = cardTemplate.querySelector('.elements__element').cloneNode(true);
-  const elementPhoto = cardElement.querySelector('.elements__image');
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const elementPhoto = cardElement.querySelector('.element__image');
 
   elementPhoto.src = linkName;
   elementPhoto.alt = titleName;
-  cardElement.querySelector('.elements__place').textContent = titleName;
+  cardElement.querySelector('.element__place').textContent = titleName;
 
-  cardElement.querySelector('.elements__button-like').addEventListener('click', likeCard);
-  cardElement.querySelector('.elements__button-bin').addEventListener('click', deleteCard);
+  cardElement.querySelector('.element__button-like').addEventListener('click', likeCard);
+  cardElement.querySelector('.element__button-bin').addEventListener('click', deleteCard);
 
-  cardElement.querySelector('.elements__image').addEventListener('click', () => {
+  cardElement.querySelector('.element__image').addEventListener('click', () => {
     openPopupImage(linkName, titleName);
   });
 
   return cardElement;
 };
 
-initialCards.forEach(function (item) {
-  addCard(cardsContent, createCard(item.title, item.link));
+initialCards.forEach(function (item) {                      // перебираем массив карточек
+  addCard(cardsContent, createCard(item.title, item.link)); // вставляем карточку (записываем карточку, которая возвращает функцию)
 });
 
 // Добавить карточку 
@@ -134,10 +127,10 @@ function addCard(container, dataCard) {
 
 // Получить данные карточки 
 
-function submitAddCardsForm(event) {
-  event.preventDefault();
+function submitAddCardsForm(evt) {
+  evt.preventDefault();
   addCard(cardsContent, createCard(titleInput.value, linkInput.value));
-  event.target.reset();
+  evt.target.reset();
   popupAddCardClose();
 };
 
