@@ -1,12 +1,12 @@
 //*  Найти селекторы в DOM  *// 
 
 
-const popupElement = document.querySelectorAll('.popup');
+const popupList = document.querySelectorAll('.popup');
 const formList = document.querySelectorAll('.popup__form');
 const content = document.querySelector('.content');
 const profile = content.querySelector('.profile');
 
-const popupEditProfile = document.querySelector('.popup_edit-profile');
+const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const formEditProfile = popupEditProfile.querySelector('#formEditProfile');
 const popupOpenButtonEdit = profile.querySelector('.profile__button-edit');
 
@@ -18,14 +18,14 @@ const popupCloseButtonEditProfile = popupEditProfile.querySelector('.popup__butt
 
 const cards = document.querySelector('.elements');
 const cardsContent = cards.querySelector('.elements__content');
-const popupAddCard = document.querySelector('.popup_add-card');
+const popupAddCard = document.querySelector('.popup_type_add-card');
 const cardAddButton = profile.querySelector('.profile__button-add');
 const formAddCard = popupAddCard.querySelector('#formAddCard');
 const titleInput = formAddCard.querySelector('.popup__input_type_title');
 const linkInput = formAddCard.querySelector('.popup__input_type_link');
 const popupCloseButtonAddCard = popupAddCard.querySelector('.popup__button-close');
 
-const popupImage = document.querySelector('.popup_image');
+const popupImage = document.querySelector('.popup_type_zoom-image');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const popupImageTitle = popupImage.querySelector('.popup__title-photo');
 const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close');
@@ -63,7 +63,7 @@ function closePopup(popup) {
 
 // Закрыть popup, оверлей
 
-popupElement.forEach((popup) => {
+popupList.forEach((popup) => {
   popup.addEventListener('click', function (evt) {
     if (evt.target.classList.contains('popup')) {
       closePopup(popup);
