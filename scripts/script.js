@@ -33,7 +33,9 @@ const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close
 
 //* Шаблон карточки *// 
 
+
 const cardTemplate = document.querySelector('#elements__template').content;
+
 
 //* Функции отрытия/закрытия попапов *// 
 
@@ -45,7 +47,7 @@ function closeByEsc(evt) {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   }
-}
+};
 
 // Открыть/закрыть popup
 
@@ -86,11 +88,6 @@ function popupEditProfileClose() {
 
 // Создать карточку 
 
-// function deleteCard (event) {
-//   const card = event.target.closest('.elements__element');
-//   card.remove();
-// };
-
 function deleteCard (event) {
   event.target.closest('.elements__element').remove();
 };
@@ -117,51 +114,25 @@ function createCard(titleName, linkName) {
   return cardElement;
 };
 
-//
-
-// initialCards.forEach((dataCard) => {
-//   const newCard = createCard(dataCard.title, dataCard.link);
-//   addCard(newCard);
-// });
-
 initialCards.forEach(function (item) {
   addCard(cardsContent, createCard(item.title, item.link));
-}
+  }
 );
 
 // Добавить карточку 
 
-// function addCard(dataCard) {
-//   cards.prepend(dataCard);
-// };
-
 function addCard(container, dataCard) {
   container.prepend(dataCard);
-}
+};
 
 // Получить данные карточки 
-
-// function submitAddCardsForm(evt) {
-//   evt.preventDefault();
-//   const titleName = titleInput.value;
-//   const linkName = linkInput.value;
-//   popupAddCardClose();
-//   createCard(titleName, linkName);
-//   // addCard(dataCard);
-//   titleInput.value = '';
-//   linkInput.value = '';
-
-//   // popupAddCardClose();
-// };
 
 function submitAddCardsForm (event) {
   event.preventDefault();
   addCard(cardsContent, createCard(titleInput.value, linkInput.value));
-  // titleInput.value = '';
-  // linkInput.value = '';
   event.target.reset();
   popupAddCardClose();
-}
+};
 
 function popupAddCardClose() {
   closePopup(popupAddCard);
@@ -206,7 +177,9 @@ formAddCard.addEventListener('submit', submitAddCardsForm);
 
 cardAddButton.addEventListener('click', () => {
   openPopup(popupAddCard);
-  // formList.reset();
+  titleInput.value = '';
+  linkInput.value = '';
+  enableValidation(validationConfig);
 });
 
 popupCloseButtonAddCard.addEventListener('click', popupAddCardClose);
