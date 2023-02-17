@@ -63,14 +63,22 @@ function closePopup(popup) {
 
 // Закрыть popup, оверлей
 
-popupList.forEach((popup) => {
-  popup.addEventListener('click', function (evt) {
-    if (evt.target.classList.contains('popup')) {
-      closePopup(popup);
-    }
-  });
-});
+// popupList.forEach((popup) => {
+//   popup.addEventListener('click', function (evt) {
+//     if (evt.target.classList.contains('popup')) {
+//       closePopup(popup);
+//     };
+//   });
+// });
 
+popupList.forEach((popup) => {                                                           // итерируем массив. объявляя каждый попап в переменную popup
+  popup.addEventListener('mouseup', (event) => {                                         // на каждый попап устанавливаем слушателя события
+    const targetClassList = event.target.classList;                                      // запишем в переменную класс элемента, на котором произошло событие
+    if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) { // проверяем наличие класса попапа ИЛИ кнопки закрытия
+      closePopup(popup);                                                                 // если один из классов присутствует, то закрываем попап
+    }
+  })
+});
 
 //*  Обработчик «отправки» формы  *// 
 
@@ -116,8 +124,7 @@ function createCard(titleName, linkName) {
 
 initialCards.forEach(function (item) {
   addCard(cardsContent, createCard(item.title, item.link));
-}
-);
+});
 
 // Добавить карточку 
 
