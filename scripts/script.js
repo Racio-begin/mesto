@@ -53,21 +53,21 @@ function closeByEsc(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEsc)
+  document.addEventListener('keydown', closeByEsc);
 };
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEsc)
+  document.removeEventListener('keydown', closeByEsc);
 };
 
 // Закрыть popup, оверлей
 
-popupList.forEach((popup) => {                                                           // итерируем массив. объявляя каждый попап в переменную popup
-  popup.addEventListener('mouseup', (evt) => {                                         // на каждый попап устанавливаем слушателя события
-    const targetClassList = evt.target.classList;                                      // запишем в переменную класс элемента, на котором произошло событие
-    if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) { // проверяем наличие класса попапа ИЛИ кнопки закрытия
-      closePopup(popup);                                                                 // если один из классов присутствует, то закрываем попап
+popupList.forEach((popup) => {                                                                  // итерируем массив. объявляя каждый попап в переменную popup
+  popup.addEventListener('click', (evt) => {                                                    // на каждый попап устанавливаем слушателя события
+    const targetClassList = evt.target.classList;                                               // запишем в переменную класс элемента, на котором произошло событие
+    if (targetClassList.contains('popup') || targetClassList.contains('popup__button-close')) { // проверяем наличие класса попапа ИЛИ кнопки закрытия
+      closePopup(popup);                                                                        // если один из классов присутствует, то закрываем попап
     }
   })
 });
@@ -83,9 +83,9 @@ function handleFormSubmit(evt) {
   popupEditProfileClose();
 };
 
-function popupEditProfileClose() {
-  closePopup(popupEditProfile);
-};
+// function popupEditProfileClose() {
+//   closePopup(popupEditProfile);
+// };
 
 // Создать карточку 
 
@@ -134,9 +134,9 @@ function submitAddCardsForm(evt) {
   popupAddCardClose();
 };
 
-function popupAddCardClose() {
-  closePopup(popupAddCard);
-};
+// function popupAddCardClose() {
+//   closePopup(popupAddCard);
+// };
 
 // Открыть карточку 
 
@@ -150,10 +150,19 @@ function openPopupImage(linkName, titleName) {
 
 // Установить слушатели // 
 
+// Универсальный обработчик крестиков
+
+// const closeButtons = document.querySelectorAll('.popup__button-close');
+
+// closeButtons.forEach((button) => {
+//   const popup = button.closest('.popup');
+//   button.addEventListener('click', () => closePopup());
+// });
+
 
 // Редактировать профиль 
 
-popupCloseButtonEditProfile.addEventListener('click', popupEditProfileClose);
+// popupCloseButtonEditProfile.addEventListener('click', popupEditProfileClose);
 formEditProfile.addEventListener('submit', handleFormSubmit);
 
 // Открыть (закрыть) popup профиля 
@@ -165,11 +174,11 @@ popupOpenButtonEdit.addEventListener('click', () => {
 });
 
 
-function popupImageClose() {
-  closePopup(popupImage);
-};
+// function popupImageClose() {
+//   closePopup(popupImage);
+// };
 
-popupCloseButtonOpenImage.addEventListener('click', popupImageClose);
+// popupCloseButtonOpenImage.addEventListener('click', popupImageClose);
 
 // Добавить карточки 
 
@@ -182,7 +191,7 @@ cardAddButton.addEventListener('click', () => {
   enableValidation(validationConfig);
 });
 
-popupCloseButtonAddCard.addEventListener('click', popupAddCardClose);
+// popupCloseButtonAddCard.addEventListener('click', popupAddCardClose);
 
 
 // Валидация форм //
