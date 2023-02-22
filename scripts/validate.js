@@ -26,7 +26,7 @@ function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
-function toggleButtonState(inputList, buttonElement, config) {
+function toggleButtonState(inputList, buttonElement, config) {  // переключатель кнопки сабмита (отправка краточки)
   if (hasInvalidInput(inputList)) {                             // отключить кнопку отправки
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
