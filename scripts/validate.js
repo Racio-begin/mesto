@@ -26,13 +26,31 @@ function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => !inputElement.validity.valid);
 };
 
+// function toggleButtonState(inputList, buttonElement, config) {  // переключатель кнопки сабмита (отправка краточки)
+//   if (hasInvalidInput(inputList)) {                             // отключить кнопку отправки
+//     buttonElement.classList.add(config.inactiveButtonClass);
+//     buttonElement.disabled = true;
+//   } else {                                                      // иначе включить её
+//     buttonElement.classList.remove(config.inactiveButtonClass);
+//     buttonElement.disabled = false;
+//   }
+// };
+
+function enableSubmitButton(buttonElement, config) {
+  buttonElement.classList.remove(config.inactiveButtonClass);
+  buttonElement.disabled = false;
+};
+
+function disableSubmitButton(buttonElement, config) {
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = true;
+};
+
 function toggleButtonState(inputList, buttonElement, config) {  // переключатель кнопки сабмита (отправка краточки)
   if (hasInvalidInput(inputList)) {                             // отключить кнопку отправки
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.disabled = true;
+    disableSubmitButton(buttonElement, config);
   } else {                                                      // иначе включить её
-    buttonElement.classList.remove(config.inactiveButtonClass);
-    buttonElement.disabled = false;
+    enableSubmitButton(buttonElement, config);
   }
 };
 

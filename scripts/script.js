@@ -80,7 +80,7 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  popupEditProfileClose();
+  closePopup(popupEditProfile);
 };
 
 // Создать карточку 
@@ -127,7 +127,8 @@ function submitAddCardsForm(evt) {
   evt.preventDefault();
   addCard(cardsContent, createCard(titleInput.value, linkInput.value));
   evt.target.reset();
-  popupAddCardClose();
+  closePopup(popupAddCard);
+  //popupList - а чего его нельзя то? просто не работает :(
 };
 
 // Открыть карточку 
@@ -163,7 +164,8 @@ cardAddButton.addEventListener('click', () => {
   openPopup(popupAddCard);
   titleInput.value = '';
   linkInput.value = '';
-  enableValidation(validationConfig);
+  // enableValidation(validationConfig);
+  disableSubmitButton(popupAddCard);
 });
 
 
