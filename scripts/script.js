@@ -38,20 +38,6 @@ const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close
 const cardTemplate = document.querySelector('#elements__template').content;
 
 
-//* Валидация форм *//
-
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.button',
-  inactiveButtonClass: 'button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_visible'
-};
-
-enableValidation(validationConfig);
-
-
 //* Функции отрытия/закрытия попапов *// 
 
 
@@ -184,3 +170,17 @@ cardAddButton.addEventListener('click', () => {
 
   openPopup(popupAddCard);
 });
+
+
+//* Валидация форм *//
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.button',
+  inactiveButtonClass: 'button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_visible'
+};
+
+enableValidation(validationConfig);
