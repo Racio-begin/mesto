@@ -48,9 +48,9 @@ function disableSubmitButton(buttonElement, config) {
 
 function toggleButtonState(inputList, buttonElement, config) {  // переключатель кнопки сабмита (отправка краточки)
   if (hasInvalidInput(inputList)) {                             // отключить кнопку отправки
-    disableSubmitButton(buttonElement, config);
+    disableSubmitButton(buttonElement, config)
   } else {                                                      // иначе включить её
-    enableSubmitButton(buttonElement, config);
+    enableSubmitButton(buttonElement, config)
   }
 };
 
