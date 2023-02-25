@@ -5,7 +5,6 @@ const popupList = document.querySelectorAll('.popup');
 const formList = document.querySelectorAll('.popup__form');
 const content = document.querySelector('.content');
 const profile = content.querySelector('.profile');
-const popupButtonSaveElement = document.querySelector('.popup__button-save');
 
 const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 const formEditProfile = popupEditProfile.querySelector('#formEditProfile');
@@ -31,6 +30,7 @@ const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const popupImageTitle = popupImage.querySelector('.popup__title-photo');
 const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close');
 
+// const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
 
 //* Шаблон карточки *// 
 
@@ -130,6 +130,7 @@ function submitAddCardsForm(evt) {
   evt.target.reset();
   closePopup(popupAddCard);
   //popupList - а чего его нельзя то? просто не работает :(
+  
 };
 
 // Открыть карточку 
@@ -162,13 +163,14 @@ popupOpenButtonEdit.addEventListener('click', () => {
 formAddCard.addEventListener('submit', submitAddCardsForm);
 
 cardAddButton.addEventListener('click', () => {
+  openPopup(popupAddCard);
+  const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
+
   titleInput.value = '';
   linkInput.value = '';
 
   // enableValidation(validationConfig);
   disableSubmitButton(popupButtonSaveElement, validationConfig);
-
-  openPopup(popupAddCard);
 });
 
 
