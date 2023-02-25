@@ -30,7 +30,7 @@ const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const popupImageTitle = popupImage.querySelector('.popup__title-photo');
 const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close');
 
-// const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
+const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
 
 //* Шаблон карточки *// 
 
@@ -164,7 +164,7 @@ formAddCard.addEventListener('submit', submitAddCardsForm);
 
 cardAddButton.addEventListener('click', () => {
   openPopup(popupAddCard);
-  const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
+  // const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
 
   titleInput.value = '';
   linkInput.value = '';
