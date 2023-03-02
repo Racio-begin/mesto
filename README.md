@@ -8,7 +8,10 @@
 
 Страница расположена по адресу: [Mesto Russia](https://racio-begin.github.io/mesto/)
 
-Бриф на проект расположен по адресу: [Макет проекта в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1&t=zfQIEhT2tdWlcQUC-0)
+Брифы на проект в Figma расположены по следующим адресам:
+[Макет проектной работы 4](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4)
+[Макет проектной работы 5](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5)
+[Макет проектной работы 6](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6)
 
 ## В работе были применены следующие технологии
 
