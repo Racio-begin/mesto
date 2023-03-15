@@ -1,6 +1,6 @@
 // Базовый набор карточек //
 
-const initialCards = [
+export const initialCards = [
   {
     title: 'Карелия',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
