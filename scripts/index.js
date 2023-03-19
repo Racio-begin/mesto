@@ -1,4 +1,16 @@
-//*  Найти селекторы в DOM  *// 
+        //*  Импорт  *//
+
+// Импортируем набор заготовленных карточек
+import initialCards from "./cards.js";
+
+// Импортируем конфиг валидации
+import validationConfig from "./validationConfig.js";
+
+// Импортируем файлы с заготовленными классами карточки и валидации форм
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
+        //*  Найти селекторы в DOM  *//
 
 const popupList = document.querySelectorAll('.popup');
 const formList = document.querySelectorAll('.popup__form');
@@ -14,31 +26,31 @@ const nameInput = formEditProfile.querySelector('.popup__input_type_username');
 const jobInput = formEditProfile.querySelector('.popup__input_type_description');
 const nameProfile = profile.querySelector('.profile__username');
 const jobProfile = profile.querySelector('.profile__description');
-const popupCloseButtonEditProfile = popupEditProfile.querySelector('.popup__button-close');
+// const popupCloseButtonEditProfile = popupEditProfile.querySelector('.popup__button-close');
 
+const popupAddCard = document.querySelector('.popup_type_add-card');
 const cards = document.querySelector('.elements');
 const cardsContent = cards.querySelector('.elements__content');
-const popupAddCard = document.querySelector('.popup_type_add-card');
 const cardAddButton = profile.querySelector('.profile__button-add');
 const formAddCard = popupAddCard.querySelector('#formAddCard');
 const titleInput = formAddCard.querySelector('.popup__input_type_title');
 const linkInput = formAddCard.querySelector('.popup__input_type_link');
-const popupCloseButtonAddCard = popupAddCard.querySelector('.popup__button-close');
+// const popupCloseButtonAddCard = popupAddCard.querySelector('.popup__button-close');
 
 const popupImage = document.querySelector('.popup_type_zoom-image');
 const popupImagePhoto = popupImage.querySelector('.popup__photo');
 const popupImageTitle = popupImage.querySelector('.popup__title-photo');
-const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close');
+// const popupCloseButtonOpenImage = popupImage.querySelector('.popup__button-close');
 
 const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
 
 
-//* Шаблон карточки *// 
+        //* Шаблон карточки *// 
 
 const cardTemplate = document.querySelector('#elements__template').content;
 
 
-//* Функции отрытия/закрытия попапов *// 
+        //* Функции отрытия/закрытия попапов *// 
 
 // Открыть/закрыть popup
 
@@ -73,7 +85,7 @@ popupList.forEach((popup) => {                                                  
 });
 
 
-//*  Обработчик «отправки» формы  *// 
+        //*  Обработчик «отправки» формы  *// 
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -94,8 +106,8 @@ function likeCard(evt) {
 
 function createCard(titleName, linkName) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  const elementPhoto = cardElement.querySelector('.element__image');
 
+  const elementPhoto = cardElement.querySelector('.element__image');
   elementPhoto.src = linkName;
   elementPhoto.alt = titleName;
   cardElement.querySelector('.element__place').textContent = titleName;
@@ -139,7 +151,7 @@ function openPopupImage(linkName, titleName) {
 };
 
 
-//* Установить слушатели *// 
+        //* Установить слушатели *// 
 
 // Редактировать профиль 
 
@@ -165,6 +177,8 @@ formAddCard.addEventListener('submit', submitAddCardsForm);
 cardAddButton.addEventListener('click', () => {
   openPopup(popupAddCard);
 
+  hideInputError(formList, inputList, validationConfig);
+
   titleInput.value = '';
   linkInput.value = '';
   // titleInput.reset();
@@ -176,6 +190,6 @@ cardAddButton.addEventListener('click', () => {
 });
 
 
-//* Валидация форм *//
+        //* Валидация форм *//
 
 enableValidation(validationConfig);
