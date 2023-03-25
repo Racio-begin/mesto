@@ -1,22 +1,20 @@
 // Создаем класс карточки - "завод" по созданию новых карточек.
 
-
-
 class Card {
-  constructor(data, template, openPopupImage) {
+	constructor(data, template, openPopupImage) {
 		this._title = data.title;
 		this._link = data.link;
 		this._template = template;
 		this._openPopupImage = openPopupImage;
-  };
+	};
 
 	_getTemplate() {										// забираем разметку из HTML и клонируем элемент
-		
+
 		const cardElement = document
-		.querySelector(this._template)
-		.content
-		.querySelector('.element')
-		.cloneNode(true)
+			.querySelector(this._template)
+			.content
+			.querySelector('.element')
+			.cloneNode(true)
 
 		return cardElement;								// вернём DOM-элемент карточки
 	}
@@ -26,10 +24,9 @@ class Card {
 
 	generateCard() {
 
-		this._element = this._getTemplate(); 												// Запишем разметку в приватное поле _element,
-																																// так у других элементов появится доступ к ней.
+		this._element = this._getTemplate(); 		// Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней.
 
-		this._setEventListeners();																		// Добавим слушателей
+		this._setEventListeners();							// Добавим слушателей
 
 		this._element.querySelector('.element__image').src = this._link;
 		this._element.querySelector('.element__place').textContent = this._title;
@@ -49,12 +46,12 @@ class Card {
 		})
 	}
 
-	_handleDeleteCard(event) {
-		event.target.closest('.element').remove();
+	_handleDeleteCard(evt) {
+		evt.target.closest('.element').remove();
 	}
 
-	_handleLikeCard(event) {
-		event.target.classList.toggle('elements__button-like_active');
+	_handleLikeCard(evt) {
+		evt.target.classList.toggle('elements__button-like_active');
 	}
 
 };

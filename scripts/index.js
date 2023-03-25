@@ -41,6 +41,8 @@ const popupImageTitle = popupImage.querySelector('.popup__title-photo');
 
 const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
 
+const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
+const validatorAddCard = new FormValidator(validationConfig, formAddCard);
 
 //* Функции отрытия/закрытия попапов *// 
 
@@ -58,8 +60,8 @@ function closePopup(popup) {
 
 // Закрыть popup, Escape
 
-function closeByEsc(event) {
-	if (event.key === "Escape") {
+function closeByEsc(evt) {
+	if (evt.key === "Escape") {
 		const openedPopup = document.querySelector('.popup_opened');
 		closePopup(openedPopup);
 	}
@@ -88,9 +90,9 @@ function handleFormSubmit(evt) {
 //*  Создание базового набора карточек  *// 
 
 initialCards.forEach((data) => {
-	const card = new Card(data, '#elements__template', openPopupImage);							// передаём объект аргументом
+	const card = new Card(data, '#elements__template', openPopupImage);		// передаём объект аргументом
 	const cardElement = card.generateCard();
-	cardsContent.prepend(cardElement) // или append?
+	cardsContent.prepend(cardElement);
 });
 
 // Добавление карточки
@@ -98,13 +100,13 @@ initialCards.forEach((data) => {
 const addCard = (data, item) => {
 	const card = new Card(data, '#elements__template', openPopupImage);
 	const cardElement = card.generateCard();
-  item.prepend(cardElement);
+	item.prepend(cardElement);
 };
 
 // Создание новой карточки 
 
-function submitAddCardsForm(event) {
-	event.preventDefault();
+function submitAddCardsForm(evt) {
+	evt.preventDefault();
 
 	const cardElement = {
 		title: titleInput.value,
@@ -125,7 +127,6 @@ function openPopupImage(titleName, linkName) {
 	openPopup(popupImage);
 };
 
-
 //* Установить слушатели *// 
 
 // Редактировать профиль 
@@ -139,10 +140,6 @@ popupOpenButtonEdit.addEventListener('click', () => {
 
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
-
-	// toggleButtonState(inputList, popupButtonSaveElement, validationConfig);
-
-	// enableValidation(validationConfig);
 });
 
 // Добавить карточки 
@@ -152,22 +149,14 @@ formAddCard.addEventListener('submit', submitAddCardsForm);
 cardAddButton.addEventListener('click', () => {
 	openPopup(popupAddCard);
 
-	titleInput.value = '';
+	titleInput.value = '';	// todo: решить через reset
 	linkInput.value = '';
-	// titleInput.reset();
-	// linkInput.reset();
-	// popupAddCard.reset();
-	// cardAddButton.reset();
 
 	validatorAddCard._disableSubmitButton(popupButtonSaveElement);
-	// validatorAddCard._hideInputError(inputList);
 	validatorAddCard._hideAllinputerror();
 });
 
 //* Валидация форм *//
-
-const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
-const validatorAddCard = new FormValidator(validationConfig, formAddCard);
 
 validatorEditProfile.enableValidation();
 validatorAddCard.enableValidation();
