@@ -29,7 +29,7 @@ class Card {
 		this._element = this._getTemplate(); 												// Запишем разметку в приватное поле _element,
 																																// так у других элементов появится доступ к ней.
 
-		this.setEventListeners();																		// Добавим слушателей
+		this._setEventListeners();																		// Добавим слушателей
 
 		this._element.querySelector('.element__image').src = this._link;
 		this._element.querySelector('.element__place').textContent = this._title;
@@ -38,7 +38,7 @@ class Card {
 		return this._element;
 	}
 
-	setEventListeners() {
+	_setEventListeners() {
 
 		this._element.querySelector('.element__button-bin').addEventListener('click', this._handleDeleteCard);
 

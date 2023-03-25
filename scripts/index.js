@@ -1,14 +1,14 @@
 //*  Импорт  *//
 
 // Импортируем набор заготовленных карточек
-import { initialCards } from "./cards.js"
+import initialCards from "./cards.js"
 
 // Импортируем конфиг валидации
 import validationConfig from "./validationConfig.js";
 
 // Импортируем файлы с заготовленными классами карточки и валидации форм
 import Card from "./Card.js";
-// import FormValidator from "./FormValidator.js";
+import FormValidator from "./FormValidator.js";
 
 //*  Найти селекторы в DOM  *//
 
@@ -108,12 +108,13 @@ const addCard = (data, item) => {
 
 function submitAddCardsForm(event) {
 	event.preventDefault();
+
 	const cardElement = {
 		title: titleInput.value,
 		link: linkInput.value,
 	};
+
 	addCard(cardElement, cardsContent);
-	// event.target.reset();
 	formAddCard.reset();
 	closePopup(popupAddCard);
 };
@@ -154,8 +155,6 @@ formAddCard.addEventListener('submit', submitAddCardsForm);
 cardAddButton.addEventListener('click', () => {
 	openPopup(popupAddCard);
 
-	// hideInputError(formList, inputList, validationConfig);
-
 	titleInput.value = '';
 	linkInput.value = '';
 	// titleInput.reset();
@@ -163,12 +162,18 @@ cardAddButton.addEventListener('click', () => {
 	// popupAddCard.reset();
 	// cardAddButton.reset();
 
-	// disableSubmitButton(popupButtonSaveElement, validationConfig);
+	validatorAddCard._disableSubmitButton(popupButtonSaveElement);
+	validatorAddCard._hideInputError(inputList);
 });
 
 //* Валидация форм *//
 
-// enableValidation(validationConfig);
+const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
+const validatorAddCard = new FormValidator(validationConfig, formAddCard);
+
+validatorEditProfile.enableValidation();
+validatorAddCard.enableValidation();
+
 
         //* Экспорт *//
 
