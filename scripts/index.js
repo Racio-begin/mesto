@@ -87,6 +87,8 @@ function handleFormSubmit(evt) {
 	closePopup(popupEditProfile);
 };
 
+// validatorEditProfile._enableSubmitButtonn(popupButtonSaveElement);
+
 //*  Создание базового набора карточек  *// 
 
 initialCards.forEach((data) => {
@@ -140,6 +142,8 @@ popupOpenButtonEdit.addEventListener('click', () => {
 
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
+
+	validatorEditProfile._toggleButtonState(popupButtonSaveElement);
 });
 
 // Добавить карточки 
@@ -153,7 +157,7 @@ cardAddButton.addEventListener('click', () => {
 	linkInput.value = '';
 
 	validatorAddCard._disableSubmitButton(popupButtonSaveElement);
-	validatorAddCard._hideAllinputerror();
+	validatorAddCard._hideAllInputError();
 });
 
 //* Валидация форм *//
