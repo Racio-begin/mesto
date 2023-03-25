@@ -19,12 +19,18 @@ class FormValidator {
   };
 
   _hideInputError(inputElement) {																												// спрятать span с ошибкой
-    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);;
-    
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
     inputElement.classList.remove(this._inputErrorClass);
   };
+
+	_hideAllinputerror() {
+		this._inputList.forEach((inputElement) => {
+			this._hideInputError(inputElement)
+		})
+	};
 
   _checkInputValidity(inputElement) {				// проверить валидность
     if (inputElement.validity.valid) {
@@ -32,7 +38,7 @@ class FormValidator {
     } else {
         this._showInputError(inputElement);	// показать ошибку, если невалидно
     }
-  }
+  };
 
   _hasInvalidInput(inputList) {
     return inputList.some((inputElement) => !inputElement.validity.valid);
@@ -48,8 +54,8 @@ class FormValidator {
 		buttonElement.disabled = true;
 	};
 
-  _toggleButtonState(inputList, buttonElement) {	// переключатель кнопки сабмита (отправка краточки)
-		if (this._hasInvalidInput(inputList)) {				// отключить кнопку отправки 
+  _toggleButtonState(buttonElement) {	// переключатель кнопки сабмита (отправка краточки)
+		if (this._hasInvalidInput(this._inputList)) {				// отключить кнопку отправки 
 			this._disableSubmitButton(buttonElement);
 		} else {																			// иначе включить её
 			this._enableSubmitButton(buttonElement);
@@ -57,15 +63,15 @@ class FormValidator {
 	};
 
   _setEventListeners(){
-		const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));	// получить все инпуты по классу инпута и создать из них массив
+		this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));	// получить все инпуты по классу инпута и создать из них массив
 		const buttonElement = this._formElement.querySelector(this._submitButtonSelector);			// получить кнопку сохранения (отправки) в форме
 
-		this._toggleButtonState(inputList, buttonElement);																			// отключить кнопку отправки при пустых полях при загрузке сайта
+		this._toggleButtonState(buttonElement);																									// отключить кнопку отправки при пустых полях при загрузке сайта
 
-		inputList.forEach((inputElement) => {																										// вешаем обработчик на каждый инпут
+		this._inputList.forEach((inputElement) => {																							// вешаем обработчик на каждый инпут
 			inputElement.addEventListener('input', () => {
 				this._checkInputValidity(inputElement);																							// проверить валидность инпута
-				this._toggleButtonState(inputList, buttonElement);																	// проверить список инпутов на валидность
+				this._toggleButtonState(buttonElement);																							// проверить список инпутов на валидность
 			})
 		})
 	};
