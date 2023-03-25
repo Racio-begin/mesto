@@ -21,8 +21,8 @@ class Card {
 		return cardElement;								// вернём DOM-элемент карточки
 	}
 
-// Подготовка карточки к публикации
-// Метод наполняет карточки данными и функциональностью
+	// Подготовка карточки к публикации
+	// Метод наполняет карточки данными и функциональностью
 
 	generateCard() {
 
@@ -56,6 +56,7 @@ class Card {
 	_handleLikeCard(event) {
 		event.target.classList.toggle('elements__button-like_active');
 	}
+
 };
 
 export default Card;
