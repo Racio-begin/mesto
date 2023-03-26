@@ -40,8 +40,8 @@ class FormValidator {
 		}
 	};
 
-	_hasInvalidInput(inputList) {
-		return inputList.some((inputElement) => !inputElement.validity.valid);
+	_hasInvalidInput() {
+		return this._inputList.some((inputElement) => !inputElement.validity.valid);
 	};
 
 	_enableSubmitButton(buttonElement) {													// включить кнопку отправки
@@ -55,7 +55,7 @@ class FormValidator {
 	};
 
 	_toggleButtonState(buttonElement) {								// переключатель кнопки форм
-		if (this._hasInvalidInput(this._inputList)) {		// отключить кнопку (отправки данных пользователя или создания карточки) 
+		if (this._hasInvalidInput()) {		// отключить кнопку (отправки данных пользователя или создания карточки) 
 			this._disableSubmitButton(buttonElement);
 		} else {																				// иначе включить её
 			this._enableSubmitButton(buttonElement);
@@ -66,12 +66,12 @@ class FormValidator {
 		this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));	// получить все инпуты по классу инпута и создать из них массив
 		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);			// получить кнопку сохранения (отправки) в форме
 
-		this._toggleButtonState(this._buttonElement);																									// отключить кнопку отправки при пустых полях при загрузке сайта
+		this._toggleButtonState(this._buttonElement);																						// отключить кнопку отправки при пустых полях при загрузке сайта
 
 		this._inputList.forEach((inputElement) => {																							// вешаем обработчик на каждый инпут
 			inputElement.addEventListener('input', () => {
 				this._checkInputValidity(inputElement);																							// проверить валидность инпута
-				this._toggleButtonState(buttonElement);																							// проверить список инпутов на валидность
+				this._toggleButtonState(this._buttonElement);																							// проверить список инпутов на валидность
 			})
 		})
 	};
