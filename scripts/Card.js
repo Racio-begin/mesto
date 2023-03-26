@@ -14,10 +14,12 @@ class Card {
 			.querySelector(this._template)
 			.content
 			.querySelector('.element')
-			.cloneNode(true)
+			.cloneNode(true);
+
+		this._likeCardButton = cardElement.querySelector('.element__button-like');
 
 		return cardElement;								// вернём DOM-элемент карточки
-	}
+	};
 
 	// Подготовка карточки к публикации
 	// Метод наполняет карточки данными и функциональностью
@@ -33,27 +35,31 @@ class Card {
 		this._element.querySelector('.element__image').alt = this._title;
 
 		return this._element;
-	}
+	};
 
 	_setEventListeners() {
 
-		this._element.querySelector('.element__button-bin').addEventListener('click', this._handleDeleteCard);
+		this._element.querySelector('.element__button-bin').addEventListener('click', () => {
+			this._handleDeleteCard();
+		});
 
-		this._element.querySelector('.element__button-like').addEventListener('click', this._handleLikeCard);
+		this._likeCardButton.addEventListener('click', () => {
+			this._handleLikeCard();
+		});
 
 		this._element.querySelector('.element__image').addEventListener('click', () => {
 			this._openPopupImage(this._title, this._link);
 		})
-	}
+	};
 
 	_handleDeleteCard() {
 		this._element.remove();
 		this._element = null;
-	}
+	};
 
-	_handleLikeCard(evt) {
-		evt.target.classList.toggle('elements__button-like_active');
-	}
+	_handleLikeCard() {
+		this._likeCardButton.classList.toggle('elements__button-like_active');
+	};
 
 };
 
