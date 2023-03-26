@@ -89,23 +89,30 @@ function handleFormSubmit(evt) {
 
 // validatorEditProfile._enableSubmitButtonn(popupButtonSaveElement);
 
-//*  Создание базового набора карточек  *// 
+//*  Работа с карточками  *// 
+
+//	Функция создания карточки
+
+const createCard = (data, template, openPopupImage) => {
+	const card = new Card(data, template, openPopupImage);		// передаём объект аргументом
+	return card.generateCard();
+};
+
+//	Создание базового набора карточек
 
 initialCards.forEach((data) => {
-	const card = new Card(data, '#elements__template', openPopupImage);		// передаём объект аргументом
-	const cardElement = card.generateCard();
-	cardsContent.prepend(cardElement);
+	const card = createCard(data, '#elements__template', openPopupImage);		// передаём объект аргументом
+	cardsContent.prepend(card);
 });
 
 // Добавление карточки
 
 const addCard = (data, item) => {
-	const card = new Card(data, '#elements__template', openPopupImage);
-	const cardElement = card.generateCard();
-	item.prepend(cardElement);
+	const card = createCard(data, '#elements__template', openPopupImage);
+	item.prepend(card);
 };
 
-// Создание новой карточки 
+// Наполнение новой карточки и её вставка
 
 function submitAddCardsForm(evt) {
 	evt.preventDefault();
@@ -135,7 +142,7 @@ function openPopupImage(titleName, linkName) {
 
 formEditProfile.addEventListener('submit', handleFormSubmit);
 
-// Открыть (закрыть) popup профиля 
+// Открыть (закрыть) popup профиля
 
 popupOpenButtonEdit.addEventListener('click', () => {
 	openPopup(popupEditProfile);
@@ -143,6 +150,7 @@ popupOpenButtonEdit.addEventListener('click', () => {
 	nameInput.value = nameProfile.textContent;
 	jobInput.value = jobProfile.textContent;
 
+	validatorEditProfile.hideAllInputErrors();
 	validatorEditProfile._toggleButtonState(popupButtonSaveElement);
 });
 
@@ -150,14 +158,16 @@ popupOpenButtonEdit.addEventListener('click', () => {
 
 formAddCard.addEventListener('submit', submitAddCardsForm);
 
+// Открыть (закрыть) popup добавления карточки
+
 cardAddButton.addEventListener('click', () => {
 	openPopup(popupAddCard);
 
 	titleInput.value = '';	// todo: решить через reset
 	linkInput.value = '';
 
+	validatorAddCard.hideAllInputErrors();
 	validatorAddCard._disableSubmitButton(popupButtonSaveElement);
-	validatorAddCard._hideAllInputError();
 });
 
 //* Валидация форм *//

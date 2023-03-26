@@ -26,7 +26,7 @@ class FormValidator {
 		inputElement.classList.remove(this._inputErrorClass);
 	};
 
-	_hideAllInputError() {
+	hideAllInputErrors() {
 		this._inputList.forEach((inputElement) => {
 			this._hideInputError(inputElement)
 		})
