@@ -87,21 +87,19 @@ function handleFormSubmit(evt) {
 	closePopup(popupEditProfile);
 };
 
-// validatorEditProfile._enableSubmitButtonn(popupButtonSaveElement);
-
 //*  Работа с карточками  *// 
 
 //	Функция создания карточки
 
 const createCard = (data, template, openPopupImage) => {
-	const card = new Card(data, template, openPopupImage);		// передаём объект аргументом
+	const card = new Card(data, template, openPopupImage);
 	return card.generateCard();
 };
 
 //	Создание базового набора карточек
 
 initialCards.forEach((data) => {
-	const card = createCard(data, '#elements__template', openPopupImage);		// передаём объект аргументом
+	const card = createCard(data, '#elements__template', openPopupImage);
 	cardsContent.prepend(card);
 });
 

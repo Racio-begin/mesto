@@ -37,7 +37,7 @@ class Card {
 		return this._element;
 	};
 
-	_setEventListeners() {
+	_setEventListeners() {		// Установка слушателей событий на создаваемую карточку
 
 		this._element.querySelector('.element__button-bin').addEventListener('click', () => {
 			this._handleDeleteCard();

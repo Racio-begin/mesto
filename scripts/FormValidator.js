@@ -54,10 +54,10 @@ class FormValidator {
 		buttonElement.disabled = true;
 	};
 
-	_toggleButtonState(buttonElement) {								// переключатель кнопки форм
-		if (this._hasInvalidInput()) {		// отключить кнопку (отправки данных пользователя или создания карточки) 
+	_toggleButtonState(buttonElement) {							// переключатель кнопки форм
+		if (this._hasInvalidInput()) {								// отключить кнопку (отправки данных пользователя или создания карточки) 
 			this._disableSubmitButton(buttonElement);
-		} else {																				// иначе включить её
+		} else {																			// иначе включить её
 			this._enableSubmitButton(buttonElement);
 		}
 	};
@@ -71,7 +71,7 @@ class FormValidator {
 		this._inputList.forEach((inputElement) => {																							// вешаем обработчик на каждый инпут
 			inputElement.addEventListener('input', () => {
 				this._checkInputValidity(inputElement);																							// проверить валидность инпута
-				this._toggleButtonState(this._buttonElement);																							// проверить список инпутов на валидность
+				this._toggleButtonState(this._buttonElement);																				// проверить список инпутов на валидность
 			})
 		})
 	};
