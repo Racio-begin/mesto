@@ -64,9 +64,9 @@ class FormValidator {
 
 	_setEventListeners() {
 		this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));	// получить все инпуты по классу инпута и создать из них массив
-		const buttonElement = this._formElement.querySelector(this._submitButtonSelector);			// получить кнопку сохранения (отправки) в форме
+		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);			// получить кнопку сохранения (отправки) в форме
 
-		this._toggleButtonState(buttonElement);																									// отключить кнопку отправки при пустых полях при загрузке сайта
+		this._toggleButtonState(this._buttonElement);																									// отключить кнопку отправки при пустых полях при загрузке сайта
 
 		this._inputList.forEach((inputElement) => {																							// вешаем обработчик на каждый инпут
 			inputElement.addEventListener('input', () => {
@@ -78,7 +78,7 @@ class FormValidator {
 
 	enableValidation() {
 		this._setEventListeners();
-	}
+	};
 
 };
 
