@@ -149,7 +149,7 @@ popupOpenButtonEdit.addEventListener('click', () => {
 	jobInput.value = jobProfile.textContent;
 
 	validatorEditProfile.hideAllInputErrors();
-	validatorEditProfile._toggleButtonState(popupButtonSaveElement);
+	validatorEditProfile.toggleButtonState(popupButtonSaveElement);
 });
 
 // Добавить карточки 
@@ -165,7 +165,7 @@ cardAddButton.addEventListener('click', () => {
 	linkInput.value = '';
 
 	validatorAddCard.hideAllInputErrors();
-	validatorAddCard._disableSubmitButton(popupButtonSaveElement);
+	validatorAddCard.disableSubmitButton(popupButtonSaveElement);
 });
 
 //* Валидация форм *//

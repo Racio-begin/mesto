@@ -44,21 +44,21 @@ class FormValidator {
 		return this._inputList.some((inputElement) => !inputElement.validity.valid);
 	};
 
-	_enableSubmitButton(buttonElement) {													// включить кнопку отправки
-		buttonElement.classList.remove(this._inactiveButtonClass);
-		buttonElement.disabled = false;
+	_enableSubmitButton() {													// включить кнопку отправки
+		this._buttonElement.classList.remove(this._inactiveButtonClass);
+		this._buttonElement.disabled = false;
 	};
 
-	_disableSubmitButton(buttonElement) {													// выключить кнопку отправки
-		buttonElement.classList.add(this._inactiveButtonClass);
-		buttonElement.disabled = true;
+	disableSubmitButton() {													// выключить кнопку отправки
+		this._buttonElement.classList.add(this._inactiveButtonClass);
+		this._buttonElement.disabled = true;
 	};
 
-	_toggleButtonState(buttonElement) {							// переключатель кнопки форм
+	toggleButtonState() {							// переключатель кнопки форм
 		if (this._hasInvalidInput()) {								// отключить кнопку (отправки данных пользователя или создания карточки) 
-			this._disableSubmitButton(buttonElement);
+			this.disableSubmitButton();
 		} else {																			// иначе включить её
-			this._enableSubmitButton(buttonElement);
+			this._enableSubmitButton();
 		}
 	};
 
@@ -66,12 +66,12 @@ class FormValidator {
 		this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));	// получить все инпуты по классу инпута и создать из них массив
 		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);			// получить кнопку сохранения (отправки) в форме
 
-		this._toggleButtonState(this._buttonElement);																						// отключить кнопку отправки при пустых полях при загрузке сайта
+		this.toggleButtonState();																						// отключить кнопку отправки при пустых полях при загрузке сайта
 
 		this._inputList.forEach((inputElement) => {																							// вешаем обработчик на каждый инпут
 			inputElement.addEventListener('input', () => {
 				this._checkInputValidity(inputElement);																							// проверить валидность инпута
-				this._toggleButtonState(this._buttonElement);																				// проверить список инпутов на валидность
+				this.toggleButtonState(this._buttonElement);																				// проверить список инпутов на валидность
 			})
 		})
 	};
