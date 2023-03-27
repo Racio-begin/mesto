@@ -44,14 +44,14 @@ class FormValidator {
 		return this._inputList.some((inputElement) => !inputElement.validity.valid);
 	};
 
-	_enableSubmitButton() {													// включить кнопку отправки
-		this._buttonElement.classList.remove(this._inactiveButtonClass);
-		this._buttonElement.disabled = false;
-	};
-
 	disableSubmitButton() {													// выключить кнопку отправки
 		this._buttonElement.classList.add(this._inactiveButtonClass);
 		this._buttonElement.disabled = true;
+	};
+
+	_enableSubmitButton() {													// включить кнопку отправки
+		this._buttonElement.classList.remove(this._inactiveButtonClass);
+		this._buttonElement.disabled = false;
 	};
 
 	toggleButtonState() {							// переключатель кнопки форм
@@ -71,7 +71,7 @@ class FormValidator {
 		this._inputList.forEach((inputElement) => {																							// вешаем обработчик на каждый инпут
 			inputElement.addEventListener('input', () => {
 				this._checkInputValidity(inputElement);																							// проверить валидность инпута
-				this.toggleButtonState(this._buttonElement);																				// проверить список инпутов на валидность
+				this.toggleButtonState();																				// проверить список инпутов на валидность
 			})
 		})
 	};
