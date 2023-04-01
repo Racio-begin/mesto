@@ -10,6 +10,18 @@ import validationConfig from "./validationConfig.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
+// Испортируем класс Section
+import Section from "./Section.js";
+
+// Импортируем классы по работе с попапами
+import Popup from "./Popup.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+
+// Импортируем класс с информацией о пользователе
+import UserInfo from "./UserInfo.js";
+
+
 //*  Найти селекторы в DOM  *//
 
 const popupList = document.querySelectorAll('.popup');
