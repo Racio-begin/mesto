@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "\"Learning platform\"",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Racio-begin/mesto.git"
+  },
+  "author": "Nikita Averyanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Racio-begin/mesto/issues"
+  },
+  "homepage": "https://github.com/Racio-begin/mesto#readme"
+}
