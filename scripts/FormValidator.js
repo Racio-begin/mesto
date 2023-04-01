@@ -76,7 +76,7 @@ class FormValidator {
 		})
 	};
 
-	enableValidation() {
+	enableValidation() { 					// Запуск валидации
 		this._setEventListeners();
 	};
 
