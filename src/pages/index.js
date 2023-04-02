@@ -1,11 +1,11 @@
 //*	Импорт	*//
 
 // Импортируем константы (конфиг валидации, базовый набор карточек)
-import { initialCards, validationConfig } from "../src/utils/constants.js";
+import { initialCards, validationConfig } from "../utils/constants.js";
 
 // Импортируем файлы с заготовленными классами карточки и валидации форм
-import Card from "../src/components/Card.js";
-import FormValidator from "../src/components/FormValidator.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 // Испортируем класс Section
 // import Section from "./Section.js";
