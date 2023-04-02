@@ -1,10 +1,7 @@
-//*  Импорт  *//
+//*	Импорт	*//
 
-// Импортируем набор заготовленных карточек
-import initialCards from "../scripts/cards.js"
-
-// Импортируем конфиг валидации
-import validationConfig from "../scripts/validationConfig.js";
+// Импортируем константы (конфиг валидации, базовый набор карточек)
+import { initialCards, validationConfig } from "../src/utils/constants.js";
 
 // Импортируем файлы с заготовленными классами карточки и валидации форм
 import Card from "../src/components/Card.js";
@@ -22,7 +19,7 @@ import FormValidator from "../src/components/FormValidator.js";
 // import UserInfo from "./UserInfo.js";
 
 
-//*  Найти селекторы в DOM  *//
+//*	Найти селекторы в DOM	*//
 
 const popupList = document.querySelectorAll('.popup');
 const formList = document.querySelectorAll('.popup__form');
