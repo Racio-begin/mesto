@@ -7,8 +7,8 @@ import initialCards from "../scripts/cards.js"
 import validationConfig from "../scripts/validationConfig.js";
 
 // Импортируем файлы с заготовленными классами карточки и валидации форм
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
+import Card from "../src/components/Card.js";
+import FormValidator from "../src/components/FormValidator.js";
 
 // Испортируем класс Section
 // import Section from "./Section.js";
