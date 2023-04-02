@@ -4,7 +4,9 @@ class Card {
 	constructor(data, template, openPopupImage) {
 		this._title = data.title;
 		this._link = data.link;
+
 		this._template = template;
+		
 		this._openPopupImage = openPopupImage;
 	};
 

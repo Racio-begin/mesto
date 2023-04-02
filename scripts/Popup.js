@@ -1,23 +1,23 @@
-class Popup{
-	constructor(popupSelector) {
-		this._popupSelector = popupSelector;
-	};
+// class Popup{
+// 	constructor(popupSelector) {
+// 		this._popupSelector = popupSelector;
+// 	};
 
-	open() {
+// 	open() {
 
-	};
+// 	};
 
-	close() {
+// 	close() {
 
-	};
+// 	};
 
-	_handleEscClose() {
+// 	_handleEscClose() {
 
-	};
+// 	};
 
-	setEventListeners() {
+// 	setEventListeners() {
 
-	};
-};
+// 	};
+// };
 
-export default Popup;
+// export default Popup;

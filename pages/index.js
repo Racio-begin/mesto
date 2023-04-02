@@ -1,25 +1,25 @@
 //*  Импорт  *//
 
 // Импортируем набор заготовленных карточек
-import initialCards from "./cards.js"
+import initialCards from "../scripts/cards.js"
 
 // Импортируем конфиг валидации
-import validationConfig from "./validationConfig.js";
+import validationConfig from "../scripts/validationConfig.js";
 
 // Импортируем файлы с заготовленными классами карточки и валидации форм
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
 
 // Испортируем класс Section
-import Section from "./Section.js";
+// import Section from "./Section.js";
 
 // Импортируем классы по работе с попапами
-import Popup from "./Popup.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
+// import Popup from "./Popup.js";
+// import PopupWithForm from "./PopupWithForm.js";
+// import PopupWithImage from "./PopupWithImage.js";
 
 // Импортируем класс с информацией о пользователе
-import UserInfo from "./UserInfo.js";
+// import UserInfo from "./UserInfo.js";
 
 
 //*  Найти селекторы в DOM  *//
@@ -81,11 +81,11 @@ function closeByEsc(evt) {
 
 // Закрыть popup, оверлей (универсальная функция для всех)
 
-popupList.forEach((popup) => {                                                                  // итерируем массив. объявляя каждый попап в переменную popup
-	popup.addEventListener('click', (evt) => {                                                    // на каждый попап устанавливаем слушателя события
-		const targetClassList = evt.target.classList;                                               // запишем в переменную класс элемента, на котором произошло событие
-		if (targetClassList.contains('popup') || targetClassList.contains('popup__button-close')) { // проверяем наличие класса попапа ИЛИ кнопки закрытия
-			closePopup(popup);                                                                        // если один из классов присутствует, то закрываем попап
+popupList.forEach((popup) => {																											// итерируем массив. объявляя каждый попап в переменную popup
+	popup.addEventListener('click', (evt) => {																		// на каждый попап устанавливаем слушателя события
+		const targetClassList = evt.target.classList;																								// запишем в переменную класс элемента, на котором произошло событие
+		if (targetClassList.contains('popup') || targetClassList.contains('popup__button-close')) {	// проверяем наличие класса попапа ИЛИ кнопки закрытия
+			closePopup(popup);																																				// если один из классов присутствует, то закрываем попап
 		}
 	})
 });

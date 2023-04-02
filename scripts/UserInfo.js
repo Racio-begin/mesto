@@ -1,16 +1,16 @@
-class UserInfo{
-	constructor(userName, userInfo) {
-		this._userName = userName;
-		this._userInfo = userInfo;
-	};
+// class UserInfo{
+// 	constructor(userName, userInfo) {
+// 		this._userName = userName;
+// 		this._userInfo = userInfo;
+// 	};
 
-	getUserInfo() {
+// 	getUserInfo() {
 
-	};
+// 	};
 
-	setUserInfo() {
+// 	setUserInfo() {
 
-	};
-};
+// 	};
+// };
 
-export default UserInfo;
+// export default UserInfo;

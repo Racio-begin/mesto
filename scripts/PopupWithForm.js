@@ -1,19 +1,19 @@
-class PopupWithForm extends Popup{
-	constructor(popupSelector) {
-		this._popupSelector = popupSelector;
-	};
+// class PopupWithForm extends Popup{
+// 	constructor(popupSelector) {
+// 		this._popupSelector = popupSelector;
+// 	};
 
-	_getInputValues() {
+// 	_getInputValues() {
 
-	};
+// 	};
 
-	setEventListeners() {
+// 	setEventListeners() {
 
-	};
+// 	};
 
-	close() {
+// 	close() {
 
-	};
-};
+// 	};
+// };
 
-export default PopupWithForm;
+// export default PopupWithForm;
