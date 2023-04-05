@@ -8,7 +8,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
 // Испортируем класс Section
-// import Section from "./Section.js";
+import Section from "../components/Section.js";
 
 // Импортируем классы по работе с попапами
 // import Popup from "./Popup.js";
@@ -52,6 +52,7 @@ const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save')
 
 const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
 const validatorAddCard = new FormValidator(validationConfig, formAddCard);
+
 
 //* Функции отрытия/закрытия попапов *// 
 
@@ -98,19 +99,32 @@ function handleFormSubmit(evt) {
 
 //*  Работа с карточками  *// 
 
-//	Функция создания карточки
-
-const createCard = (data, template, openPopupImage) => {
-	const card = new Card(data, template, openPopupImage);
-	return card.generateCard();
-};
-
 //	Создание базового набора карточек
 
-initialCards.forEach((data) => {
-	const card = createCard(data, '#elements__template', openPopupImage);
-	cardsContent.prepend(card);
-});
+// initialCards.forEach((data) => {
+// 	const card = createCard(data, '#elements__template', openPopupImage);
+// 	cardsContent.prepend(card);
+// });
+
+// const createCard = (data, template, openPopupImage) => {
+// 	const card = new Card(data, template, openPopupImage);
+// 	return card.generateCard();
+// };
+
+const сardList = new Section(
+	{
+		items: initialCards, renderer: (item) => {
+			const card = new Card(item, '#elements__template', openPopupImage);
+
+			const cardElement = card.generateCard();
+
+			сardList.addItem(cardElement);
+		}
+	}, '.elements__content');
+
+//	Функция создания карточки
+
+сardList.renderItems();
 
 // Добавление карточки
 
