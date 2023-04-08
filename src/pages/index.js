@@ -106,15 +106,15 @@ function handleFormSubmit(evt) {
 // 	cardsContent.prepend(card);
 // });
 
-// const createCard = (data, template, openPopupImage) => {
-// 	const card = new Card(data, template, openPopupImage);
-// 	return card.generateCard();
-// };
+const createCard = (data, template, openPopupImage) => {
+	const card = new Card(data, template, openPopupImage);
+	return card.generateCard();
+};
 
 const сardList = new Section(
 	{
-		items: initialCards, renderer: (item) => {
-			const card = new Card(item, '#elements__template', openPopupImage);
+		items: initialCards, renderer: (data) => {
+			const card = new Card(data, '#elements__template', openPopupImage);
 
 			const cardElement = card.generateCard();
 
