@@ -58,7 +58,7 @@ const сardList = new Section(
 			const card = new Card(
 				data,
 				'#elements__template',
-				() => popupWithImage.open(title, link));
+				() => popupWithImage.open(data.title, data.link));
 
 			const cardElement = card.generateCard();
 
