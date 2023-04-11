@@ -1,6 +1,6 @@
 // Создаем класс отрисовки элементов на странице (как базового набора карточек, так и новых)
 
-class Section{
+class Section {
 	constructor({ items, renderer }, containerSelector) {
 		this._renderedItems = items;
 		this._renderer = renderer;

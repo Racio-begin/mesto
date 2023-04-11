@@ -1,11 +1,28 @@
-// class PopupWithImage extends Popup{
-// 	constructor(popupSelector) {
-// 		this._popupSelector = popupSelector;
-// 	};
+import Popup from "../components/Popup.js";
 
-// 	open() {
+class PopupWithImage extends Popup {
+	constructor(popupSelector) {
+		super(popupSelector);
 
-// 	};
-// };
+		// this._popup = document.querySelector(popupSelector);
 
-// export default PopupWithImage;
+		// this._photo = this._popup.querySelector('.popup__photo');
+		// this._title = this._popup.querySelector('.popup__title-photo');
+		this._photo = this._popup.querySelector('.popup__photo');
+		this._title = this._popup.querySelector('.popup__title-photo');
+	};
+
+	open(titleName, linkName) {
+		super.open();
+
+		this._photo.src = linkName;
+		this._photo.alt = titleName;
+		this._title.textContent = titleName;
+		// linkName = this._photo.src;
+		// titleName = this._photo.alt;
+		// titleName = this._title.textContent;
+	};
+
+};
+
+export default PopupWithImage;
