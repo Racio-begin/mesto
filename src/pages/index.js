@@ -108,7 +108,7 @@ const createCard = (data, template, openPopupImage) => {
 const addCard = (data, item) => {
 	const card = createCard(data,
 		'#elements__template',
-		() => popupWithImage.open(title, link));
+		() => popupWithImage.open(data.title, data.link));
 		
 	item.prepend(card);
 };
