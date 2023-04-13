@@ -68,6 +68,12 @@ const сardList = new Section(
 
 сardList.renderItems();
 
+//* Функция установки имени и информации о пользователе *//
+
+const userInfo = new UserInfo({
+  nameSelector: '.profile__username',
+  infoSelector: '.profile__description'
+});
 
 //* Функции отрытия/закрытия попапов *//
 
@@ -81,19 +87,19 @@ const formPopupAddCard = new PopupWithForm({
 	}
 });
 
+// const formPopupEditProfile = new PopupWithForm({
+// 	popupSelector: '.popup_type_edit-profile',
+//   handleFormSubmit: (data) => {
+//     userInfo.setUserInfo(data.name, data.info);
+// 	}
+// });
+
 const formPopupEditProfile = new PopupWithForm({
 	popupSelector: '.popup_type_edit-profile',
-  handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data.name, data.info);
-    formPopupEditProfile.close();
-	}
-});
-
-//* Функция установки имени и информации о пользователе *//
-
-const userInfo = new UserInfo({
-  nameSelector: '.profile__username',
-  infoSelector: '.profile__description'
+  handleFormSubmit: (userdata) => {
+    const { name, info } = userdata;
+    userInfo.setUserInfo({ name, info });
+  }
 });
 
 //	Функция создания карточки
@@ -117,7 +123,6 @@ const addCard = (data, item) => {
 
 function submitAddCardsForm(evt) {
 	evt.preventDefault();
-
 	const cardElement = {
 		title: titleInput.value,
 		link: linkInput.value,
@@ -128,56 +133,42 @@ function submitAddCardsForm(evt) {
 	formPopupAddCard.close();
 };
 
-// Открыть карточку (используем в классе "Card")
-
-// function openPopupImage(titleName, linkName) {
-	// popupImagePhoto.src = linkName;
-	// popupImagePhoto.alt = titleName;
-	// popupImageTitle.textContent = titleName;
-// };
-
-//*  Обработчик «отправки» формы профиля пользователя *// 
-
-function handleFormSubmit(evt) {
-	evt.preventDefault();
-	nameProfile.textContent = nameInput.value;
-	jobProfile.textContent = jobInput.value;
-	formPopupEditProfile.close();
-};
-
 //* Установить слушатели *// 
-
-// Редактировать профиль 
-
-formEditProfile.addEventListener('submit', handleFormSubmit);
 
 // Открыть (закрыть) popup профиля
 
 popupOpenButtonEdit.addEventListener('click', () => {
-	// formPopupEditProfile.setEventListeners();
 	formPopupEditProfile.open();
+
+	nameInput.value = userInfo.getUserInfo().name;
+	jobInput.value = userInfo.getUserInfo().info;
 
 	validatorEditProfile.hideAllInputErrors();
 	validatorEditProfile.toggleButtonState();
 });
 
-// Добавить карточки 
-
-formAddCard.addEventListener('submit', submitAddCardsForm);
 
 // Открыть (закрыть) popup добавления карточки
 
 cardAddButton.addEventListener('click', () => {
-	// formPopupAddCard.setEventListeners();
 	formPopupAddCard.open();
-
 	validatorAddCard.hideAllInputErrors();
 	validatorAddCard.disableSubmitButton();
 });
 
-// Слушатель просмотра карточки
+// Слушатели классов
 
 popupWithImage.setEventListeners();
+formPopupEditProfile.setEventListeners();
+
+// Добавить карточку
+
+formAddCard.addEventListener('submit', submitAddCardsForm);
+
+// Редактировать профиль 
+
+formEditProfile.addEventListener('submit', popupOpenButtonEdit);
+
 
 //* Валидация форм *//
 
