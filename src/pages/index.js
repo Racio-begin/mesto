@@ -89,7 +89,7 @@ const formPopupAddCard = new PopupWithForm({
 
 // const formPopupEditProfile = new PopupWithForm({
 // 	popupSelector: '.popup_type_edit-profile',
-//   handleFormSubmit: (data) => {
+//  handleFormSubmit: (data) => {
 //     userInfo.setUserInfo(data.name, data.info);
 // 	}
 // });
