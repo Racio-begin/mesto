@@ -87,20 +87,20 @@ const formPopupAddCard = new PopupWithForm({
 	}
 });
 
-// const formPopupEditProfile = new PopupWithForm({
-// 	popupSelector: '.popup_type_edit-profile',
-//  handleFormSubmit: (data) => {
-//     userInfo.setUserInfo(data.name, data.info);
-// 	}
-// });
-
 const formPopupEditProfile = new PopupWithForm({
 	popupSelector: '.popup_type_edit-profile',
-  handleFormSubmit: (userdata) => {
-    const { name, info } = userdata;
-    userInfo.setUserInfo({ name, info });
-  }
+	handleFormSubmit: (data) => {
+    userInfo.setUserInfo(data.name, data.info);
+	}
 });
+
+// const formPopupEditProfile = new PopupWithForm({
+// 	popupSelector: '.popup_type_edit-profile',
+//   handleFormSubmit: (userdata) => {
+//     const { name, info } = userdata;
+//     userInfo.setUserInfo({ name, info });
+//   }
+// });
 
 //	Функция создания карточки
 
