@@ -9,9 +9,14 @@ class PopupWithForm extends Popup {
 		this._inputList = this._form.querySelectorAll('.popup__input');
 	};
 
-	_getInputValues() {
-		const formValues = {};
+	close() {
+		super.close();
 
+		this._form.reset();
+	};
+
+	_getInputValues() { 				// Собираем содержимое всех инпутов формы
+		const formValues = {};
 		this._inputList.forEach(input => {
 			formValues[input.name] = input.value;
 		});
@@ -28,15 +33,6 @@ class PopupWithForm extends Popup {
 			this.close();
 		})
 	};
-
-	close() {
-		super.close();
-		this._form.reset();
-	};
-
-	clearInputs() {
-		
-	}
 
 };
 

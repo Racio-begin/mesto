@@ -4,20 +4,20 @@
 import {
 	initialCards,
 	validationConfig,
-	content,
-	profile,
-	popupEditProfile,
+	// content,
+	// profile,
+	// popupEditProfile,
 	formEditProfile,
 	popupOpenButtonEdit,
 	nameInput,
 	jobInput,
-	popupAddCard,
-	cards,
-	cardsContent,
+	// popupAddCard,
+	// cards,
+	// cardsContent,
 	cardAddButton,
-	formAddCard,
-	titleInput,
-	linkInput
+	formAddCard
+	// titleInput,
+	// linkInput
 }
 	from "../utils/constants.js";
 
@@ -36,42 +36,31 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 
 
-//* Отрисовать базовый набор карточек *//
+//*	Функции	*//
 
-// const сardList = new Section(
-// 	{
-// 		items: initialCards,
-// 		renderer: (data) => {
-// 			const card = new Card(
-// 				data,
-// 				'#elements__template',
-// 				() => popupWithImage.open(data.title, data.link));
-
-// 			const cardElement = card.generateCard();
-
-// 			сardList.addItem(cardElement);
-// 		}
-// 	}, '.elements__content');
+// Отрисовать базовый набор карточек
 
 const сardList = new Section({
-  items: initialCards,
-  renderer: (data) => {
-    const card = createCard(data.title, data.link, '#elements__template');
-    сardList.addItem(card);
-  }
+	items: initialCards,
+	renderer: (data) => {
+		const card = createCard(data.title, data.link, '#elements__template');
+		сardList.addItem(card);
+	}
 },
-  '.elements__content');
+	'.elements__content');
 
 сardList.renderItems();
 
-//* Функция установки имени и информации о пользователе *//
+
+// Установить имя и информацию о пользователе
 
 const userInfo = new UserInfo({
 	nameSelector: '.profile__username',
 	infoSelector: '.profile__description'
 });
 
-//* Функции отрытия/закрытия попапов *//
+
+// Функции отрытия/закрытия попапов
 
 const popupWithImage = new PopupWithImage('.popup_type_zoom-image');
 
@@ -97,27 +86,6 @@ function createCard(title, link, template) {
 	return card.generateCard();
 };
 
-// Добавление карточки
-
-// const addCard = (data, item) => {
-// 	const card = createCard(data, '#elements__template');
-
-// 	item.prepend(card);
-// };
-
-// Наполнение новой карточки и её вставка
-
-// function submitAddCardsForm(evt) {
-// 	evt.preventDefault();
-// 	const cardElement = {
-// 		title: titleInput.value,
-// 		link: linkInput.value,
-// 	};
-
-// 	addCard(cardElement, cardsContent);
-// 	formAddCard.reset();
-// 	formPopupAddCard.close();
-// };
 
 //* Установить слушатели *// 
 
@@ -147,13 +115,6 @@ formPopupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 formPopupEditProfile.setEventListeners();
 
-// Редактировать профиль 
-
-// formEditProfile.addEventListener('submit', popupOpenButtonEdit);
-
-// Добавить карточку
-
-// formAddCard.addEventListener('submit', submitAddCardsForm);
 
 //* Валидация форм *//
 
