@@ -1,7 +1,25 @@
 //*	Импорт	*//
 
 // Импортируем константы (конфиг валидации, базовый набор карточек)
-import { initialCards, validationConfig } from "../utils/constants.js";
+import {
+	initialCards,
+	validationConfig,
+	content,
+	profile,
+	popupEditProfile,
+	formEditProfile,
+	popupOpenButtonEdit,
+	nameInput,
+	jobInput,
+	popupAddCard,
+	cards,
+	cardsContent,
+	cardAddButton,
+	formAddCard,
+	titleInput,
+	linkInput
+}
+	from "../utils/constants.js";
 
 // Импортируем файлы с заготовленными классами карточки и валидации форм
 import Card from "../components/Card.js";
@@ -16,38 +34,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 
 // Импортируем класс с информацией о пользователе
 import UserInfo from "../components/UserInfo.js";
-
-
-//*	Найти селекторы в DOM	*//
-
-// const popupList = document.querySelectorAll('.popup');
-// const formList = document.querySelectorAll('.popup__form');
-// const inputList = document.querySelectorAll('.popup__input');
-const content = document.querySelector('.content');
-const profile = content.querySelector('.profile');
-
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const formEditProfile = popupEditProfile.querySelector('#formEditProfile');
-const popupOpenButtonEdit = profile.querySelector('.profile__button-edit');
-
-const nameInput = formEditProfile.querySelector('.popup__input_type_username');
-const jobInput = formEditProfile.querySelector('.popup__input_type_description');
-// const nameProfile = profile.querySelector('.profile__username');
-// const jobProfile = profile.querySelector('.profile__description');
-
-const popupAddCard = document.querySelector('.popup_type_add-card');
-const cards = document.querySelector('.elements');
-const cardsContent = cards.querySelector('.elements__content');
-const cardAddButton = profile.querySelector('.profile__button-add');
-const formAddCard = popupAddCard.querySelector('#formAddCard');
-const titleInput = formAddCard.querySelector('.popup__input_type_title');
-const linkInput = formAddCard.querySelector('.popup__input_type_link');
-
-const popupImage = document.querySelector('.popup_type_zoom-image');
-// const popupImagePhoto = popupImage.querySelector('.popup__photo');
-// const popupImageTitle = popupImage.querySelector('.popup__title-photo');
-
-// const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
 
 
 //* Отрисовать базовый набор карточек *//
@@ -151,6 +137,7 @@ cardAddButton.addEventListener('click', () => {
 
 // Слушатели классов
 
+formPopupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 formPopupEditProfile.setEventListeners();
 
