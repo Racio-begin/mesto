@@ -4,20 +4,12 @@
 import {
 	initialCards,
 	validationConfig,
-	// content,
-	// profile,
-	// popupEditProfile,
 	formEditProfile,
 	popupOpenButtonEdit,
 	nameInput,
 	jobInput,
-	// popupAddCard,
-	// cards,
-	// cardsContent,
 	cardAddButton,
 	formAddCard
-	// titleInput,
-	// linkInput
 }
 	from "../utils/constants.js";
 
