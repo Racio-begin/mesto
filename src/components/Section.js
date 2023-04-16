@@ -8,11 +8,11 @@ class Section {
 		this._container = document.querySelector(containerSelector);
 	};
 
-	addItem(item) { 													// метод, который принимает DOM-элемент и добавляет его в контейнер
+	addItem(item) { 														// метод, который принимает DOM-элемент и добавляет его в контейнер
 		this._container.append(item);
 	};
 
-	renderItems() {														// метод, отвечающий за отрисовку всех элементов
+	renderItems() {															// метод, отвечающий за отрисовку всех элементов
 		this._renderedItems.forEach((item) => {
 			this._renderer(item);
 		});

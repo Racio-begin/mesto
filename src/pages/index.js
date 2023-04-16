@@ -20,9 +20,9 @@ import UserInfo from "../components/UserInfo.js";
 
 //*	Найти селекторы в DOM	*//
 
-const popupList = document.querySelectorAll('.popup');
-const formList = document.querySelectorAll('.popup__form');
-const inputList = document.querySelectorAll('.popup__input');
+// const popupList = document.querySelectorAll('.popup');
+// const formList = document.querySelectorAll('.popup__form');
+// const inputList = document.querySelectorAll('.popup__input');
 const content = document.querySelector('.content');
 const profile = content.querySelector('.profile');
 
@@ -32,8 +32,8 @@ const popupOpenButtonEdit = profile.querySelector('.profile__button-edit');
 
 const nameInput = formEditProfile.querySelector('.popup__input_type_username');
 const jobInput = formEditProfile.querySelector('.popup__input_type_description');
-const nameProfile = profile.querySelector('.profile__username');
-const jobProfile = profile.querySelector('.profile__description');
+// const nameProfile = profile.querySelector('.profile__username');
+// const jobProfile = profile.querySelector('.profile__description');
 
 const popupAddCard = document.querySelector('.popup_type_add-card');
 const cards = document.querySelector('.elements');
@@ -44,16 +44,17 @@ const titleInput = formAddCard.querySelector('.popup__input_type_title');
 const linkInput = formAddCard.querySelector('.popup__input_type_link');
 
 const popupImage = document.querySelector('.popup_type_zoom-image');
-const popupImagePhoto = popupImage.querySelector('.popup__photo');
-const popupImageTitle = popupImage.querySelector('.popup__title-photo');
+// const popupImagePhoto = popupImage.querySelector('.popup__photo');
+// const popupImageTitle = popupImage.querySelector('.popup__title-photo');
 
-const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
+// const popupButtonSaveElement = popupAddCard.querySelector('.popup__button-save');
 
 
 //* Отрисовать базовый набор карточек *//
 
 const сardList = new Section(
-	{items: initialCards,
+	{
+		items: initialCards,
 		renderer: (data) => {
 			const card = new Card(
 				data,
@@ -71,8 +72,8 @@ const сardList = new Section(
 //* Функция установки имени и информации о пользователе *//
 
 const userInfo = new UserInfo({
-  nameSelector: '.profile__username',
-  infoSelector: '.profile__description'
+	nameSelector: '.profile__username',
+	infoSelector: '.profile__description'
 });
 
 //* Функции отрытия/закрытия попапов *//
@@ -90,17 +91,9 @@ const formPopupAddCard = new PopupWithForm({
 const formPopupEditProfile = new PopupWithForm({
 	popupSelector: '.popup_type_edit-profile',
 	handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data.name, data.info);
+		userInfo.setUserInfo(data.name, data.info);
 	}
 });
-
-// const formPopupEditProfile = new PopupWithForm({
-// 	popupSelector: '.popup_type_edit-profile',
-//   handleFormSubmit: (userdata) => {
-//     const { name, info } = userdata;
-//     userInfo.setUserInfo({ name, info });
-//   }
-// });
 
 //	Функция создания карточки
 
@@ -115,7 +108,7 @@ const addCard = (data, item) => {
 	const card = createCard(data,
 		'#elements__template',
 		() => popupWithImage.open(data.title, data.link));
-		
+
 	item.prepend(card);
 };
 

@@ -1,4 +1,4 @@
-class Popup{
+class Popup {
 	constructor(popupSelector) {
 		this._popup = document.querySelector(popupSelector);
 		this._popupList = document.querySelectorAll('.popup');
@@ -27,7 +27,7 @@ class Popup{
 			this._popup.addEventListener('click', (evt) => {																								// на каждый попап устанавливаем слушателя события
 				const targetClassList = evt.target.classList;																									// запишем в переменную класс элемента, на котором произошло событие
 				if (targetClassList.contains('popup') || targetClassList.contains('popup__button-close')) {		// проверяем наличие класса попапа ИЛИ кнопки закрытия
-					// this.close();																																		// если один из классов присутствует, то закрываем попап
+					// this.close();																																						// если один из классов присутствует, то закрываем попап
 					this.close(this._popup);
 				}
 			})

@@ -1,4 +1,4 @@
-class UserInfo{
+class UserInfo {
 	constructor({ nameSelector, infoSelector }) {
 		this._name = document.querySelector(nameSelector);
 		this._info = document.querySelector(infoSelector);
@@ -11,7 +11,7 @@ class UserInfo{
 		}
 	};
 
-	setUserInfo(name, info) {										// отправить данные пользователя на страничку
+	setUserInfo(name, info) {							// отправить данные пользователя на страничку
 		this._name.textContent = name;
 		this._info.textContent = info;
 	};

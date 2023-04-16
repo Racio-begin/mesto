@@ -6,7 +6,7 @@ class Card {
 		this._link = data.link;
 
 		this._template = template;
-		
+
 		this._openPopupImage = openPopupImage;
 	};
 
