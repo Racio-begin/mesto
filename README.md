@@ -1,8 +1,5 @@
 # Проект: Mesto Russia
 
-
-![Превью: Жак-Ив Кусто](https://www.rgo.ru/sites/default/files/styles/head_image_article/public/1034295-e1477344635669-1.jpg?itok=4U4Dw9en)
-
 ![Превью: Жак-Ив Кусто](https://github.com/Racio-begin/mesto/blob/main/src/images/mesto_preview.png)
 
 
