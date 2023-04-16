@@ -4,7 +4,8 @@
   "description": "\"Learning platform\"",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Racio-begin/mesto/issues"
   },
-  "homepage": "https://github.com/Racio-begin/mesto#readme"
+  "homepage": "https://github.com/Racio-begin/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.79.0",
+    "webpack-cli": "^5.0.1"
+  }
 }
