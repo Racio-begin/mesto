@@ -43,8 +43,8 @@ class Popup {
 
   setEventListeners() {
     this._closeButton.addEventListener('click', () => this.close());
-    this._popup.addEventListener('click', (event) => {
-      if (event.target === event.currentTarget) {
+    this._popup.addEventListener('click', (evt) => {
+      if (evt.target === evt.currentTarget) {
         this.close();
       }
     });

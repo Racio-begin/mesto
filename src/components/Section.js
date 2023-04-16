@@ -9,7 +9,7 @@ class Section {
 	};
 
 	addItem(item) { 														// метод, который принимает DOM-элемент и добавляет его в контейнер
-		this._container.append(item);
+		this._container.prepend(item);
 	};
 
 	renderItems() {															// метод, отвечающий за отрисовку всех элементов

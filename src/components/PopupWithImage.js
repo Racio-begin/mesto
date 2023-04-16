@@ -8,12 +8,12 @@ class PopupWithImage extends Popup {
 		this._title = this._popup.querySelector('.popup__title-photo');
 	};
 
-	open(titleName, linkName) {
+	open(title, link) {
 		super.open();
 
-		this._photo.src = linkName;
-		this._photo.alt = titleName;
-		this._title.textContent = titleName;
+		this._photo.src = link;
+		this._photo.alt = title;
+		this._title.textContent = title;
 	};
 
 };
