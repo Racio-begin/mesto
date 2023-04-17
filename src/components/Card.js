@@ -19,6 +19,7 @@ class Card {
 			.cloneNode(true);
 
 		this._likeCardButton = cardElement.querySelector('.element__button-like');
+		this._elementImage = cardElement.querySelector('.element__image');
 
 		return cardElement;								// вернём DOM-элемент карточки
 	};
@@ -30,9 +31,9 @@ class Card {
 
 		this._element = this._getTemplate(); 		// Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней.
 
-		this._element.querySelector('.element__image').src = this._link;
+		this._elementImage.src = this._link;
 		this._element.querySelector('.element__place').textContent = this._title;
-		this._element.querySelector('.element__image').alt = this._title;
+		this._elementImage.alt = this._title;
 
 		this._setEventListeners();							// Добавим слушателей
 
@@ -49,7 +50,7 @@ class Card {
 			this._handleLikeCard();
 		});
 
-		this._element.querySelector('.element__image').addEventListener('click', () => {
+		this._elementImage.addEventListener('click', () => {
 			this._openPopupImage(this._title, this._link);
 		})
 	};

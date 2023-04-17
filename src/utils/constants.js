@@ -2,16 +2,16 @@
 
 export const initialCards = [
 	{
-		title: 'Карелия',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+		title: 'Зайцевский пруд',
+		link: 'https://sun9-79.userapi.com/impg/64LhMndtVdhl7np3M2KXZ5sLVFy_bdOiu1jr8A/4XLnddsY0R0.jpg?size=1600x1200&quality=96&sign=7be5879c0ca9c94c5a45d0ceb825a7b4&type=album'
 	},
 	{
 		title: 'Озеро Лесное',
 		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
 	},
 	{
-		title: 'Байкал',
-		link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+		title: 'Калужские леса',
+		link: 'https://sun9-58.userapi.com/impg/U1erxQU6RULtRDhsmcRnglkMX-_C5ywykGiwgQ/7vYGy02gTO8.jpg?size=1080x810&quality=96&sign=b70178fbf754bf438a90c1c66d3b5846&type=album'
 	},
 	{
 		title: 'Остров Ольхон',
