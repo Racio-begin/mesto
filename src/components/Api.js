@@ -5,29 +5,44 @@ class Api {
 	}
 
 	getInitialCards() {
-		return fetch(this.url, {
+		return fetch(`${this.url}/cards`, {
+			method: "GET",
 			headers: this.headers
-			}).then(res => {
+		}).then(res => {
 				if (res.ok) {
 					return res.json()
 				}
 				return Promise.reject('Error');
 			})
-	}
-
-			
+	};
 	// 		.then((result) => {
 	// 			console.log(result);
 	// 		});
 	// }
 
-	createCard() {
+	getUserData() {
+		return fetch(`${this.url}/users/me`, {
+			method: "GET",
+			headers: this.headers
+		}).then(res => {
+				if (res.ok) {
+					return res.json()
+				}
+				return Promise.reject('Error');
+			})
+	};
+
+	updateUserData() {
 
 	}
+
+	createCard() {
+
+	};
 
 	deleteCard() {
 
-	}
+	};
 
 	// другие методы работы с API
 }
