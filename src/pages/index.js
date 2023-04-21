@@ -30,8 +30,20 @@ import PopupWithForm from "../components/PopupWithForm.js";
 // Импортируем класс с информацией о пользователе
 import UserInfo from "../components/UserInfo.js";
 
+// Импортируем класс с API
+import Api from '../components/Api.js';
 
 //*	Функции	*//
+
+const api = new Api({
+	baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+	headers: {
+		authorization: 'c467341b-672a-48a9-be5b-ea4a89cc731a',
+		'Content-Type': 'application/json'
+	}
+});
+
+api.getInitialCards().then(console.log);
 
 // Отрисовать базовый набор карточек
 
@@ -46,14 +58,12 @@ const сardList = new Section({
 
 сardList.renderItems();
 
-
 // Установить имя и информацию о пользователе
 
 const userInfo = new UserInfo({
 	nameSelector: '.profile__username',
 	infoSelector: '.profile__description'
 });
-
 
 // Функции отрытия/закрытия попапов
 
