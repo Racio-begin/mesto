@@ -19,6 +19,9 @@
 
 [Макет проектной работы 6](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6)
 
+[Макет проектной работы 9(https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9)
+
+
 ## В работе были применены следующие технологии:
 
 * Семантические теги (article, form, section, figure, button, template).
