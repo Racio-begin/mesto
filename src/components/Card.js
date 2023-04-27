@@ -1,7 +1,7 @@
 // Создаем класс карточки - "завод" по созданию новых карточек
 
 class Card {
-	constructor(data, userId, template, openPopupImage, handleLike, handleUnlike) {
+	constructor(data, userId, template, openPopupImage, handleLike, handleUnlike, handleDeleteYourCard) {
 		this._cardData = data;
 
 		this._name = data.name;
@@ -17,6 +17,7 @@ class Card {
 		this._openPopupImage = openPopupImage;
 		this._handleLike = handleLike;
 		this._handleUnlike = handleUnlike;
+		this._handleDeleteYourCard = handleDeleteYourCard;
 	};
 
 	_getTemplate() {										// забираем разметку из HTML и клонируем элемент
@@ -56,7 +57,7 @@ class Card {
 	_setEventListeners() {					// Установка слушателей событий на создаваемую карточку
 
 		this._element.querySelector('.element__button-bin').addEventListener('click', () => {
-			this._handleDeleteCard();
+			this._handleDeleteYourCard(this, this._cardId);
 		});
 
 		this._likeCardButton.addEventListener('click', () => {
@@ -68,7 +69,7 @@ class Card {
 		})
 	};
 
-	_handleDeleteCard() {
+	handleDeleteCard() {
 		this._element.remove();
 		this._element = null;
 	};

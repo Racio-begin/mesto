@@ -27,6 +27,7 @@ import FormValidator from "../components/FormValidator.js";
 // Импортируем классы по работе с попапами
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupDelete from "../components/PopupDelete.js";
 
 // Испортируем класс Section
 import Section from "../components/Section.js";
@@ -127,12 +128,25 @@ function createCard(data) {
 			api.unlikeCard(cardId)
 				.then((res) => card.countLikes(res))
 				.catch(console.log('Error: лайк не пришел с сервера (index)'))
-		}
+		},
+		(card, cardId) => { popupDelete.open(card, cardId) }
 	);
 
 	return card.generateCard();
 };
 
+//	Функция умного удаления карточки
+
+const popupDelete = new PopupDelete(
+	'.popup_type_delete-card',
+	(card, cardId) => {
+		api.deleteCard(cardId)
+			.then(() => {
+				card.handleDeleteCard();
+				popupDelete.close();
+			})
+			.catch(console.log('Error: карточка не удалена с сервера (index)'));
+	})
 
 //* Cлушатели *// 
 
@@ -161,8 +175,9 @@ cardAddButton.addEventListener('click', () => {
 // Слушатели классов
 
 formPopupAddCard.setEventListeners();
-popupWithImage.setEventListeners();
 formPopupEditProfile.setEventListeners();
+popupWithImage.setEventListeners();
+popupDelete.setEventListeners();
 
 
 //* Валидация форм *//
