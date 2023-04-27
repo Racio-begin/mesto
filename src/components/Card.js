@@ -1,13 +1,22 @@
 // Создаем класс карточки - "завод" по созданию новых карточек
 
 class Card {
-	constructor(data, template, openPopupImage) {
+	constructor(data, userId, template, openPopupImage, handleLike, handleUnlike) {
+		this._cardData = data;
+
 		this._name = data.name;
 		this._link = data.link;
+		this.likes = data.likes;
+		this._likesCounter = data.likes.length;
+		this._cardId = data._id;
+
+		this.userId = userId;
 
 		this._template = template;
 
 		this._openPopupImage = openPopupImage;
+		this._handleLike = handleLike;
+		this._handleUnlike = handleUnlike;
 	};
 
 	_getTemplate() {										// забираем разметку из HTML и клонируем элемент
@@ -35,6 +44,10 @@ class Card {
 		this._element.querySelector('.element__place').textContent = this._name;
 		this._elementImage.alt = this._name;
 
+		this._like = this._element.querySelector('.element__button-like');
+		this._counter = this._element.querySelector('.elements__like-counter');
+		this.countLikes(this._cardData);
+
 		this._setEventListeners();							// Добавим слушателей
 
 		return this._element;
@@ -60,8 +73,32 @@ class Card {
 		this._element = null;
 	};
 
+	ifCardLiked() {
+		return this._likes.some(item => item._id === this.userId);
+	};
+
 	_handleLikeCard() {
-		this._likeCardButton.classList.toggle('elements__button-like_active');
+		// this._likeCardButton.classList.toggle('elements__button-like_active');
+		if (this.ifCardLiked()) {
+			this._handleUnlike(this._cardId)
+		} else {
+			this._handleLike(this._cardId)
+		}
+	};
+
+	countLikes(card) {
+		this._likes = card.likes;
+		if (this._likes.length === 0) {
+			this._counter.textContent = '0';
+		} else {
+			this._counter.textContent = this._likes.length
+		};
+
+		if (this.ifCardLiked()) {
+			this._like.classList.add('elements__button-like_active');
+		} else {
+			this._like.classList.remove('elements__button-like_active');
+		};
 	};
 
 };

@@ -9,7 +9,8 @@ class FormValidator {
 
 		this._formElement = formElement
 
-		// this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+		// this._inputElement = inputElement;
+		// this._errorElement = this._formElement.querySelector(`.${this._inputElement.id}-error`);
 	}
 
 	_showInputError(inputElement) {																												// высветить span с ошибкой

@@ -48,36 +48,45 @@ class Api {
 			});
 	}
 
-	// оно не работает :(
-	
-	// sendingCard(cardData) {
-	// 	return fetch(`${this._url}/cards`, {
-	// 		method: "POST",
-	// 		headers: this._headers,
-	// 		body: JSON.stringify({
-	// 			name: cardData['cardTitle'],
-	// 			link: cardData['cardLink']
-	// 		}).then(res => {
-	// 				if (res.ok) {
-	// 					return res.json()
-	// 				}
-	// 				return Promise.reject('Error: новая карточка не отправлена на сервер');
-	// 			})
-	// 	})
-	// };
-
 	sendingCard(name, link) {
 		return fetch(`${this._url}/cards`, {
-				method: 'POST',
-				headers: this._headers,
-				body: JSON.stringify({name, link}),
-		}).then(res => {
-			if (res.ok) {
-				return res.json()
-			}
-			return Promise.reject('Error: новая карточка не отправлена на сервер');
+			method: 'POST',
+			headers: this._headers,
+			body: JSON.stringify({ name, link }),
 		})
-};
+			.then(res => {
+				if (res.ok) {
+					return res.json()
+				}
+				return Promise.reject('Error: новая карточка не отправлена на сервер');
+			})
+	};
+
+	likeCard(cardId) {
+		return fetch(`${this._url}/cards/${cardId}/likes`, {
+			method: "PUT",
+			headers: this._headers
+		})
+			.then((res) => {
+				if (res.ok) {
+					return res.json();
+				}
+				return Promise.reject('Error: лайк не отправлен на сервер');
+			});
+	}
+
+	unlikeCard(cardId) {
+		return fetch(`${this._url}/cards/${cardId}/likes`, {
+			method: "DELETE",
+			headers: this._headers
+		})
+			.then((res) => {
+				if (res.ok) {
+					return res.json();
+				}
+				return Promise.reject('Error: лайк не пришел с сервера');
+			});
+	}
 
 };
 
