@@ -1,9 +1,9 @@
 // Создаем класс карточки - "завод" по созданию новых карточек
 
 class Card {
-	constructor(title, link, template, openPopupImage) {
-		this._title = title;
-		this._link = link;
+	constructor(data, template, openPopupImage) {
+		this._name = data.name;
+		this._link = data.link;
 
 		this._template = template;
 
@@ -32,8 +32,8 @@ class Card {
 		this._element = this._getTemplate(); 		// Запишем разметку в приватное поле _element, так у других элементов появится доступ к ней.
 
 		this._elementImage.src = this._link;
-		this._element.querySelector('.element__place').textContent = this._title;
-		this._elementImage.alt = this._title;
+		this._element.querySelector('.element__place').textContent = this._name;
+		this._elementImage.alt = this._name;
 
 		this._setEventListeners();							// Добавим слушателей
 
@@ -51,7 +51,7 @@ class Card {
 		});
 
 		this._elementImage.addEventListener('click', () => {
-			this._openPopupImage(this._title, this._link);
+			this._openPopupImage(this._name, this._link);
 		})
 	};
 

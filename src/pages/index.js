@@ -5,7 +5,6 @@ import './index.css';
 
 // Импортируем константы (конфиг валидации, базовый набор карточек)
 import {
-	initialCards,
 	validationConfig,
 	formEditProfile,
 	popupOpenButtonEdit,
@@ -13,29 +12,32 @@ import {
 	jobInput,
 	cardAddButton,
 	formAddCard,
-	myToken,
-	baseUrl
+	baseUrl,
+	myToken
 }
 	from "../utils/constants.js";
+
+// Импортируем класс с API
+import Api from '../components/Api.js';
 
 // Импортируем файлы с заготовленными классами карточки и валидации форм
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 
-// Испортируем класс Section
-import Section from "../components/Section.js";
-
 // Импортируем классы по работе с попапами
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 
+// Испортируем класс Section
+import Section from "../components/Section.js";
+
 // Импортируем класс с информацией о пользователе
 import UserInfo from "../components/UserInfo.js";
 
-// Импортируем класс с API
-import Api from '../components/Api.js';
 
 //*	Функции	*//
+
+let userId;
 
 const api = new Api({
 	url: baseUrl,
@@ -49,49 +51,67 @@ api.getInitialCards().then(console.log);
 
 api.getUserData().then(console.log);
 
+Promise.all([api.getUserData(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    сardList.renderItems(cardsData);
+  })
+  .catch(console.log);
+
 // Отрисовать базовый набор карточек
 
-const сardList = new Section({
-	items: initialCards,
-	renderer: (data) => {
-		const card = createCard(data.title, data.link, '#elements__template');
+const сardList = new Section(
+	(data) => {
+		const card = createCard(data);
 		сardList.addItem(card);
-	}
-},
+	},
 	'.elements__content');
-
-сardList.renderItems();
 
 // Установить имя и информацию о пользователе
 
 const userInfo = new UserInfo({
 	nameSelector: '.profile__username',
-	infoSelector: '.profile__description'
+	aboutSelector: '.profile__description',
+	avatarSelector: '.profile__avatar'
 });
 
 // Функции отрытия/закрытия попапов
 
 const popupWithImage = new PopupWithImage('.popup_type_zoom-image');
 
-const formPopupAddCard = new PopupWithForm({
-	popupSelector: '.popup_type_add-card',
-	handleFormSubmit: (data) => {
-		сardList.addItem(createCard(data.title, data.link, '#elements__template'));
-		formPopupAddCard.close();
+const formPopupAddCard = new PopupWithForm(
+	'.popup_type_add-card',
+	(data) => {
+		// api.sendingCard(cardData)
+		api.sendingCard(data['cardTitle'], data['cardLink'])
+		.then ((result) => {
+			сardList.addItemBeginning(createCard(result));
+			formPopupAddCard.close();
+		})
+		.catch(console.log)
 	}
-});
+);
 
-const formPopupEditProfile = new PopupWithForm({
-	popupSelector: '.popup_type_edit-profile',
-	handleFormSubmit: (data) => {
-		userInfo.setUserInfo(data.name, data.info);
+const formPopupEditProfile = new PopupWithForm(
+	'.popup_type_edit-profile',
+	(userData) => {
+		api.updateUserData(userData)
+		.then((data) => {
+			userInfo.setUserInfo(data);
+			formPopupEditProfile.close()
+		})
+		.catch(console.log)
 	}
-});
+);
 
 //	Функция создания карточки
 
-function createCard(title, link, template) {
-	const card = new Card(title, link, template, () => popupWithImage.open(title, link));
+function createCard(data) {
+	const card = new Card(
+		data,
+		'#elements__template',
+		() => popupWithImage.open(data.name, data.link));
 	return card.generateCard();
 };
 
@@ -101,21 +121,23 @@ function createCard(title, link, template) {
 // Открыть (закрыть) popup профиля
 
 popupOpenButtonEdit.addEventListener('click', () => {
+	nameInput.value = userInfo.getUserInfo().name;
+	jobInput.value = userInfo.getUserInfo().about;
+
 	formPopupEditProfile.open();
 
-	nameInput.value = userInfo.getUserInfo().name;
-	jobInput.value = userInfo.getUserInfo().info;
+	// validatorEditProfile.hideAllInputErrors();
+	// validatorEditProfile.toggleButtonState();
 
-	validatorEditProfile.hideAllInputErrors();
-	validatorEditProfile.toggleButtonState();
 });
 
 // Открыть (закрыть) popup добавления карточки
 
 cardAddButton.addEventListener('click', () => {
+	// validatorAddCard.hideAllInputErrors();
+	// validatorAddCard.disableSubmitButton();
+
 	formPopupAddCard.open();
-	validatorAddCard.hideAllInputErrors();
-	validatorAddCard.disableSubmitButton();
 });
 
 // Слушатели классов
@@ -130,5 +152,5 @@ formPopupEditProfile.setEventListeners();
 const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
 const validatorAddCard = new FormValidator(validationConfig, formAddCard);
 
-validatorEditProfile.enableValidation();
-validatorAddCard.enableValidation();
+// validatorEditProfile.enableValidation();
+// validatorAddCard.enableValidation();

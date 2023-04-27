@@ -1,50 +1,87 @@
 class Api {
-	constructor(options) {
-		this.url = options.url;
-		this.headers = options.headers;
+	constructor(config) {
+		this._url = config.url;
+		this._headers = config.headers;
 	}
 
 	getInitialCards() {
-		return fetch(`${this.url}/cards`, {
+		return fetch(`${this._url}/cards`, {
 			method: "GET",
-			headers: this.headers
-		}).then(res => {
+			headers: this._headers
+		})
+			.then(res => {
 				if (res.ok) {
 					return res.json()
 				}
-				return Promise.reject('Error');
+				return Promise.reject('Error: набор карточек с сервера не получен');
 			})
 	};
-	// 		.then((result) => {
-	// 			console.log(result);
-	// 		});
-	// }
 
 	getUserData() {
-		return fetch(`${this.url}/users/me`, {
+		return fetch(`${this._url}/users/me`, {
 			method: "GET",
-			headers: this.headers
-		}).then(res => {
+			headers: this._headers
+		})
+			.then((res) => {
 				if (res.ok) {
-					return res.json()
+					return res.json();
 				}
-				return Promise.reject('Error');
-			})
-	};
-
-	updateUserData() {
-
+				return Promise.reject('Error: данные о пользователе с сервера не получены');
+			});
 	}
 
-	createCard() {
+	updateUserData(userData) {
+		return fetch(`${this._url}/users/me`, {
+			method: "PATCH",
+			headers: this._headers,
+			body: JSON.stringify({
+				name: userData["userName"],
+				about: userData["userAbout"]
+			})
+		})
+			.then((res) => {
+				if (res.ok) {
+					return res.json();
+				} else {
+					return Promise.reject('Error: новые данные о пользователя не отправлены на сервер');
+				}
+			});
+	}
 
-	};
+	// оно не работает :(
+	
+	// sendingCard(cardData) {
+	// 	return fetch(`${this._url}/cards`, {
+	// 		method: "POST",
+	// 		headers: this._headers,
+	// 		body: JSON.stringify({
+	// 			name: cardData['cardTitle'],
+	// 			link: cardData['cardLink']
+	// 		}).then(res => {
+	// 				if (res.ok) {
+	// 					return res.json()
+	// 				}
+	// 				return Promise.reject('Error: новая карточка не отправлена на сервер');
+	// 			})
+	// 	})
+	// };
 
-	deleteCard() {
+	sendingCard(name, link) {
+		return fetch(`${this._url}/cards`, {
+				method: 'POST',
+				headers: this._headers,
+				body: JSON.stringify({name, link}),
+		}).then(res => {
+			if (res.ok) {
+				return res.json()
+			}
+			return Promise.reject('Error: новая карточка не отправлена на сервер');
+		})
+};
 
-	};
-
-	// другие методы работы с API
-}
+};
 
 export default Api;
+
+
+
