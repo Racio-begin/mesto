@@ -52,10 +52,6 @@ const api = new Api({
 	}
 });
 
-// api.getInitialCards().then(console.log);
-
-// api.getUserData().then(console.log);
-
 // Установить промисы для получения данных пользователя и карточек
 
 Promise.all([api.getUserData(), api.getInitialCards()])
@@ -96,6 +92,7 @@ const formPopupAddCard = new PopupWithForm(
 				formPopupAddCard.close();
 			})
 			.catch(console.log('Error: новая карточка не отправлена на сервер (index)'))
+			// todo: почему выскакивает сообщение об ошибке
 	}
 );
 
@@ -146,7 +143,9 @@ const popupDelete = new PopupDelete(
 				popupDelete.close();
 			})
 			.catch(console.log('Error: карточка не удалена с сервера (index)'));
-	})
+			// todo: почему выскакивает сообщение об ошибке
+	}
+);
 
 //* Cлушатели *// 
 
@@ -187,3 +186,10 @@ const validatorAddCard = new FormValidator(validationConfig, formAddCard);
 
 validatorEditProfile.enableValidation();
 validatorAddCard.enableValidation();
+
+
+//*	Тест - проверка связи с сервером	*//
+
+api.getInitialCards().then(console.log);
+
+api.getUserData().then(console.log);

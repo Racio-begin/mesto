@@ -9,7 +9,6 @@ export const validationConfig = {
 	errorClass: 'popup__input-error_visible'
 };
 
-
 //*	Найти селекторы в DOM	*//
 
 export const content = document.querySelector('.content');
