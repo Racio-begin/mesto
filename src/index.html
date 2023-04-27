@@ -20,7 +20,8 @@
 
 		<section class="profile">
 			<div class="profile__content">
-				<img class="profile__avatar" src="<%=require('./images/Jacques-Yves_Cousteau.jpg')%>" alt="Фотография пользователя">
+				<img class="profile__avatar" src="<%=require('./images/Jacques-Yves_Cousteau.jpg')%>"
+					alt="Фотография пользователя">
 				<div class="profile__info">
 					<h1 class="profile__username">Жак-Ив Кусто</h1>
 					<button class="profile__button-edit button" type="button"
@@ -67,7 +68,7 @@
 				aria-label="Закрыть окно"></button>
 			<h2 class="popup__title">Новое место</h2>
 			<form class="popup__form" name="formAddCard" id="formAddCard" novalidate>
-				<input class="popup__input popup__input_type_title" type="text" name="cardName" id="cardName" required
+				<input class="popup__input popup__input_type_title" type="text" name="cardTitle" id="cardTitle" required
 					placeholder="Название" minlength="2" maxlength="30">
 				<span class="title-error popup__input-error"></span>
 				<input class="popup__input popup__input_type_link" type="url" name="cardLink" id="cardLink" required
@@ -87,6 +88,17 @@
 			<h3 class="popup__title-photo"></h3>
 		</div>
 	</div>
+
+	<!------     POPUP подтвержения удаления карточки    ------>
+	<!-- <div class="popup popup_type_delete-card">
+		<div class="popup__container">
+			<button class="button popup__button-close" type="button"></button>
+			<h2 class="popup__title">Вы уверены?</h2>
+			<form class="popup__form" name="cardDeliting" novalidate>
+				<button class="popup__submit" type="submit">Да</button>
+			</form>
+		</div>
+	</div> -->
 
 	<!------     Шаблон карточки    ------>
 	<template id="elements__template">
