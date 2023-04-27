@@ -37,7 +37,11 @@ import UserInfo from "../components/UserInfo.js";
 
 //*	Функции	*//
 
+// Инициировать переменную с ID
+
 let userId;
+
+// Зашить токен с адресом сервера в запросы
 
 const api = new Api({
 	url: baseUrl,
@@ -51,13 +55,15 @@ const api = new Api({
 
 // api.getUserData().then(console.log);
 
+// Установить промисы для получения данных пользователя и карточек
+
 Promise.all([api.getUserData(), api.getInitialCards()])
-  .then(([userData, cardsData]) => {
-    userId = userData._id;
-    userInfo.setUserInfo(userData);
-    сardList.renderItems(cardsData);
-  })
-  .catch(console.log);
+	.then(([userData, cardsData]) => {
+		userId = userData._id;
+		userInfo.setUserInfo(userData);
+		сardList.renderItems(cardsData);
+	})
+	.catch(console.log);
 
 // Отрисовать базовый набор карточек
 
@@ -83,13 +89,12 @@ const popupWithImage = new PopupWithImage('.popup_type_zoom-image');
 const formPopupAddCard = new PopupWithForm(
 	'.popup_type_add-card',
 	(data) => {
-		// api.sendingCard(cardData)
 		api.sendingCard(data['title'], data['link'])
-		.then ((result) => {
-			сardList.addItemBeginning(createCard(result));
-			formPopupAddCard.close();
-		})
-		.catch(console.log)
+			.then((result) => {
+				сardList.addItemBeginning(createCard(result));
+				formPopupAddCard.close();
+			})
+			.catch(console.log('Error: новая карточка не отправлена на сервер (index)'))
 	}
 );
 
@@ -97,11 +102,11 @@ const formPopupEditProfile = new PopupWithForm(
 	'.popup_type_edit-profile',
 	(userData) => {
 		api.updateUserData(userData)
-		.then((data) => {
-			userInfo.setUserInfo(data);
-			formPopupEditProfile.close()
-		})
-		.catch(console.log)
+			.then((data) => {
+				userInfo.setUserInfo(data);
+				formPopupEditProfile.close()
+			})
+			.catch(console.log('Error: новые данные о пользователя не отправлены на сервер (index)'))
 	}
 );
 
@@ -110,13 +115,26 @@ const formPopupEditProfile = new PopupWithForm(
 function createCard(data) {
 	const card = new Card(
 		data,
+		userId,
 		'#elements__template',
-		() => popupWithImage.open(data.name, data.link));
+		() => popupWithImage.open(data.name, data.link),
+		(cardId) => {
+			api.likeCard(cardId)
+				.then((res) => card.countLikes(res))
+				.catch(console.log('Error: лайк не отправлен на сервер (index)'))
+		},
+		(cardId) => {
+			api.unlikeCard(cardId)
+				.then((res) => card.countLikes(res))
+				.catch(console.log('Error: лайк не пришел с сервера (index)'))
+		}
+	);
+
 	return card.generateCard();
 };
 
 
-//* Установить слушатели *// 
+//* Cлушатели *// 
 
 // Открыть (закрыть) popup профиля
 
