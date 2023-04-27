@@ -9,6 +9,7 @@ class Card {
 		this.likes = data.likes;
 		this._likesCounter = data.likes.length;
 		this._cardId = data._id;
+		this._owner = data.owner;
 
 		this.userId = userId;
 
@@ -29,6 +30,7 @@ class Card {
 			.cloneNode(true);
 
 		this._likeCardButton = cardElement.querySelector('.element__button-like');
+		this._buttonBin = cardElement.querySelector('.element__button-bin');
 		this._elementImage = cardElement.querySelector('.element__image');
 
 		return cardElement;								// вернём DOM-элемент карточки
@@ -49,6 +51,10 @@ class Card {
 		this._counter = this._element.querySelector('.elements__like-counter');
 		this.countLikes(this._cardData);
 
+		if (this.userId !== this._cardData.owner._id) {
+			this._buttonBin.style.display = 'none'
+		};
+
 		this._setEventListeners();							// Добавим слушателей
 
 		return this._element;
@@ -56,7 +62,7 @@ class Card {
 
 	_setEventListeners() {					// Установка слушателей событий на создаваемую карточку
 
-		this._element.querySelector('.element__button-bin').addEventListener('click', () => {
+		this._buttonBin.addEventListener('click', () => {
 			this._handleDeleteYourCard(this, this._cardId);
 		});
 
