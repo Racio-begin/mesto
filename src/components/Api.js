@@ -35,8 +35,8 @@ class Api {
 			method: "PATCH",
 			headers: this._headers,
 			body: JSON.stringify({
-				name: userData["userName"],
-				about: userData["userAbout"]
+				name: userData["username"],
+				about: userData["description"]
 			})
 		})
 			.then((res) => {

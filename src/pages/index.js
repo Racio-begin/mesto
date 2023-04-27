@@ -47,9 +47,9 @@ const api = new Api({
 	}
 });
 
-api.getInitialCards().then(console.log);
+// api.getInitialCards().then(console.log);
 
-api.getUserData().then(console.log);
+// api.getUserData().then(console.log);
 
 Promise.all([api.getUserData(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
@@ -84,7 +84,7 @@ const formPopupAddCard = new PopupWithForm(
 	'.popup_type_add-card',
 	(data) => {
 		// api.sendingCard(cardData)
-		api.sendingCard(data['cardTitle'], data['cardLink'])
+		api.sendingCard(data['title'], data['link'])
 		.then ((result) => {
 			сardList.addItemBeginning(createCard(result));
 			formPopupAddCard.close();
@@ -126,16 +126,16 @@ popupOpenButtonEdit.addEventListener('click', () => {
 
 	formPopupEditProfile.open();
 
-	// validatorEditProfile.hideAllInputErrors();
-	// validatorEditProfile.toggleButtonState();
+	validatorEditProfile.hideAllInputErrors();
+	validatorEditProfile.toggleButtonState();
 
 });
 
 // Открыть (закрыть) popup добавления карточки
 
 cardAddButton.addEventListener('click', () => {
-	// validatorAddCard.hideAllInputErrors();
-	// validatorAddCard.disableSubmitButton();
+	validatorAddCard.hideAllInputErrors();
+	validatorAddCard.disableSubmitButton();
 
 	formPopupAddCard.open();
 });
@@ -152,5 +152,5 @@ formPopupEditProfile.setEventListeners();
 const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
 const validatorAddCard = new FormValidator(validationConfig, formAddCard);
 
-// validatorEditProfile.enableValidation();
-// validatorAddCard.enableValidation();
+validatorEditProfile.enableValidation();
+validatorAddCard.enableValidation();

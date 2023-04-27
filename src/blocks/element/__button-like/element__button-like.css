@@ -4,6 +4,7 @@
   background-repeat: no-repeat;
   background-image: url(./../../../images/icons/elements__button_like.svg);
   background-position: center;
+  /* background-position: top; */
   background-size: cover;
   border: none;
   padding: 0;
