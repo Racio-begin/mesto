@@ -6,6 +6,7 @@ import './index.css';
 // Импортируем константы (конфиг валидации, базовый набор карточек)
 import {
 	validationConfig,
+	avatarEditButton,
 	formEditProfile,
 	popupOpenButtonEdit,
 	nameInput,
@@ -92,7 +93,7 @@ const formPopupAddCard = new PopupWithForm(
 				formPopupAddCard.close();
 			})
 			.catch(console.log('Error: новая карточка не отправлена на сервер (index)'))
-			// todo: почему выскакивает сообщение об ошибке
+		// todo: почему выскакивает сообщение об ошибке
 	}
 );
 
@@ -107,6 +108,17 @@ const formPopupEditProfile = new PopupWithForm(
 			.catch(console.log('Error: новые данные о пользователя не отправлены на сервер (index)'))
 	}
 );
+
+const formPopupEditAvatar = new PopupWithForm(
+	'.popup_type_edit-avatar',
+	(data) => {
+		api.updateUserAvatar(data)
+			.then((res) => {
+				userInfo.setUserInfo(res)
+				formPopupEditAvatar.close()
+			})
+			.catch(console.log('Error: новый аватарпользователя не отправлен на сервер'))
+	})
 
 //	Функция создания карточки
 
@@ -143,11 +155,21 @@ const popupDelete = new PopupDelete(
 				popupDelete.close();
 			})
 			.catch(console.log('Error: карточка не удалена с сервера (index)'));
-			// todo: почему выскакивает сообщение об ошибке
+		// todo: почему выскакивает сообщение об ошибке
 	}
 );
 
+
 //* Cлушатели *// 
+
+// Открыть (закрыть) popup редактирования аватара пользователя
+
+avatarEditButton.addEventListener('click', () => {
+	formPopupEditAvatar.open();
+
+	// validatorEditAvatar.hideAllInputErrors();
+	// validatorEditAvatar.disableSubmitButton();
+});
 
 // Открыть (закрыть) popup профиля
 
@@ -173,17 +195,19 @@ cardAddButton.addEventListener('click', () => {
 
 // Слушатели классов
 
+formPopupEditAvatar.setEventListeners();
 formPopupAddCard.setEventListeners();
 formPopupEditProfile.setEventListeners();
 popupWithImage.setEventListeners();
 popupDelete.setEventListeners();
 
-
 //* Валидация форм *//
 
+// const validatorEditAvatar = new FormValidator(validationConfig, formEditAvatar);
 const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
 const validatorAddCard = new FormValidator(validationConfig, formAddCard);
 
+// validatorEditAvatar.enableValidation();
 validatorEditProfile.enableValidation();
 validatorAddCard.enableValidation();
 

@@ -11,8 +11,12 @@ export const validationConfig = {
 
 //*	Найти селекторы в DOM	*//
 
+export const popupOpenAvatarEdit = document.querySelector('.popup_type_edit-avatar');
+export const formEditAvatar = popupOpenAvatarEdit.querySelector('#formEditAvatar');
+
 export const content = document.querySelector('.content');
 export const profile = content.querySelector('.profile');
+export const avatarEditButton = profile.querySelector('.profile__button-avatar-edit');
 export const popupOpenButtonEdit = profile.querySelector('.profile__button-edit');
 export const cardAddButton = profile.querySelector('.profile__button-add');
 

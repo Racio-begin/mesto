@@ -101,6 +101,23 @@ class Api {
 			});
 	};
 
+	updateUserAvatar(data) {
+		return fetch(`${this._url}/users/me/avatar`, {
+			method: "PATCH",
+			headers: this._headers,
+			body: JSON.stringify({
+				avatar: data["avatar"]
+			})
+		})
+			.then((res) => {
+				if (res.ok) {
+					return res.json();
+				} else {
+					return Promise.reject('Error: новый аватарпользователя не отправлен на сервер');
+				}
+			});
+	};
+
 };
 
 export default Api;
