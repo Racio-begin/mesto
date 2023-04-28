@@ -61,7 +61,10 @@ Promise.all([api.getUserData(), api.getInitialCards()])
 		userInfo.setUserInfo(userData);
 		сardList.renderItems(cardsData);
 	})
-	.catch(console.log('Промисы catch (index)'));
+	// .catch(console.log('Промисы catch (index)'));
+	.catch((err) => {
+		console.log(err, 'Промисы catch (index)'); // выведем ошибку в консоль
+	})
 
 // Отрисовать базовый набор карточек
 
@@ -87,14 +90,16 @@ const popupWithImage = new PopupWithImage('.popup_type_zoom-image');
 const formPopupAddCard = new PopupWithForm(
 	'.popup_type_add-card',
 	(data) => {
-		formPopupAddCard.preservationProcess(true);
+		formPopupAddCard.toggleSaveStatus(true);
 		api.sendingCard(data['title'], data['link'])
 			.then((result) => {
 				сardList.addItemBeginning(createCard(result));
 				formPopupAddCard.close();
 			})
-			.catch(console.log('Error: новая карточка не отправлена на сервер (index)'))
-			.finally(formPopupAddCard.preservationProcess(false))
+			.catch((err) => {
+				console.log(err, 'Error: новая карточка не отправлена на сервер (index)');
+			})
+			.finally(() => formPopupAddCard.toggleSaveStatus(false))
 		// todo: почему выскакивает сообщение об ошибке, хотя всё работает...
 	}
 );
@@ -102,31 +107,32 @@ const formPopupAddCard = new PopupWithForm(
 const formPopupEditProfile = new PopupWithForm(
 	'.popup_type_edit-profile',
 	(userData) => {
-		formPopupEditProfile.preservationProcess(true);
+		formPopupEditProfile.toggleSaveStatus(true);
 		api.updateUserData(userData)
 			.then((data) => {
 				userInfo.setUserInfo(data);
 				formPopupEditProfile.close()
 			})
-			// .catch((err) => {
-			// 	console.log("Да харе уже")
-			// })
-			.catch(console.log('Error: новые данные о пользователе не отправлены на сервер (index)'))
-			.finally(formPopupEditProfile.preservationProcess(false))
+			.catch((err) => {
+				console.log(err, 'Error: новые данные о пользователе не отправлены на сервер (index)');
+			})
+			.finally(() => formPopupEditProfile.toggleSaveStatus(false))
 	}
 );
 
 const formPopupEditAvatar = new PopupWithForm(
 	'.popup_type_edit-avatar',
 	(data) => {
-		formPopupEditAvatar.preservationProcess(true);
+		formPopupEditAvatar.toggleSaveStatus(true);
 		api.updateUserAvatar(data)
 			.then((res) => {
 				userInfo.setUserInfo(res)
 				formPopupEditAvatar.close()
 			})
-			.catch(console.log('Error: новый аватар пользователя не отправлен на сервер (index)'))
-			.finally(formPopupEditAvatar.preservationProcess(false))
+			.catch((err) => {
+				console.log(err, 'Error: новый аватар пользователя не отправлен на сервер (index)');
+			})
+			.finally( () => formPopupEditAvatar.toggleSaveStatus(false))
 	})
 
 //	Функция создания карточки
@@ -140,12 +146,16 @@ function createCard(data) {
 		(cardId) => {
 			api.likeCard(cardId)
 				.then((res) => card.countLikes(res))
-				.catch(console.log('Error: лайк не отправлен на сервер (index)'))
+				.catch((err) => {
+					console.log(err, 'Error: лайк не отправлен на сервер (index)');
+				})
 		},
 		(cardId) => {
 			api.unlikeCard(cardId)
 				.then((res) => card.countLikes(res))
-				.catch(console.log('Error: лайк не пришел с сервера (index)'))
+				.catch((err) => {
+					console.log(err, 'Error: лайк не пришел с сервера (index)');
+				})
 		},
 		(card, cardId) => { formPopupDelete.open(card, cardId) }
 	);
@@ -163,7 +173,9 @@ const formPopupDelete = new PopupWithDeleteCard(
 				card.handleDeleteCard();
 				formPopupDelete.close();
 			})
-			.catch(console.log('Error: карточка не удалена с сервера (index)'));
+			.catch((err) => {
+				console.log(err, 'Error: карточка не удалена с сервера (index)');
+			})
 	}
 );
 
@@ -222,6 +234,6 @@ validatorAddCard.enableValidation();
 
 //*	Тест - проверка связи с сервером	*//
 
-// api.getInitialCards().then(console.log);
+api.getInitialCards().then(console.log);
 
-// api.getUserData().then(console.log);
+api.getUserData().then(console.log);

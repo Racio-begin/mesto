@@ -8,7 +8,7 @@ class PopupWithForm extends Popup {
 
 		this._form = this._popup.querySelector('.popup__form');
 		this._inputList = this._form.querySelectorAll('.popup__input');
-		this._submitButton = this._form.querySelectorAll('.popup__button-save');
+		this._submitButton = this._form.querySelector('.popup__button-save');
 	};
 
 	close() {
@@ -36,11 +36,12 @@ class PopupWithForm extends Popup {
 		})
 	};
 
-	preservationProcess(status) {	// Запускаем UX при сабмите у всех форм
+	toggleSaveStatus(status) {		// Запускаем UX при сабмите у всех форм
 		if (status) {
+			this._defaultText = this._submitButton.textContent;
 			this._submitButton.textContent = "Сохранение..."
 		} else (
-			this._submitButton.textContent = this._submitButton.textContent)
+			this._submitButton.textContent = this._defaultText)
 	};
 
 };
