@@ -2,7 +2,7 @@ class Api {
 	constructor(config) {
 		this._url = config.url;
 		this._headers = config.headers;
-	}
+	};
 
 	getInitialCards() {
 		return fetch(`${this._url}/cards`, {
@@ -28,7 +28,7 @@ class Api {
 				}
 				return Promise.reject('Error: данные о пользователе с сервера не получены');
 			});
-	}
+	};
 
 	updateUserData(userData) {
 		return fetch(`${this._url}/users/me`, {
@@ -43,9 +43,9 @@ class Api {
 				if (res.ok) {
 					return res.json();
 				}
-					return Promise.reject('Error: новые данные о пользователя не отправлены на сервер');
+				return Promise.reject('Error: новые данные о пользователе не отправлены на сервер');
 			});
-	}
+	};
 
 	sendingCard(name, link) {
 		return fetch(`${this._url}/cards`, {
@@ -72,7 +72,7 @@ class Api {
 				}
 				return Promise.reject('Error: лайк не отправлен на сервер');
 			});
-	}
+	};
 
 	unlikeCard(cardId) {
 		return fetch(`${this._url}/cards/${cardId}/likes`, {
@@ -85,7 +85,7 @@ class Api {
 				}
 				return Promise.reject('Error: лайк не пришел с сервера');
 			});
-	}
+	};
 
 	deleteCard(cardId) {
 		return fetch(`${this._url}/cards/${cardId}`, {
@@ -112,7 +112,7 @@ class Api {
 				if (res.ok) {
 					return res.json();
 				}
-					return Promise.reject('Error: новый аватар пользователя не отправлен на сервер');
+				return Promise.reject('Error: новый аватар пользователя не отправлен на сервер');
 			});
 	};
 

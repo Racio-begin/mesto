@@ -12,7 +12,7 @@ class UserInfo {
 		});
 	};
 
-	setUserInfo({ name, about, avatar, _id }) {		// отправить данные пользователя на страничку
+	setUserInfo({ name, about, avatar, _id }) {		// получить данные пользователя с сервера
 		this._name.textContent = name;
 		this._about.textContent = about;
 		this._avatar.src = avatar;

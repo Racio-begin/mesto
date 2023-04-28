@@ -17,7 +17,7 @@ class Popup {
 		if (evt.key === 'Escape') {
 			this.close();
 		}
-	}
+	};
 
 	setEventListeners() {
 		this._popup.addEventListener('click', (evt) => {																							// на каждый попап устанавливаем слушателя события

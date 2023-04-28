@@ -36,7 +36,7 @@ class PopupWithForm extends Popup {
 		})
 	};
 
-	preservationProcess(status) {
+	preservationProcess(status) {	// Запускаем UX при сабмите у всех форм
 		if (status) {
 			this._submitButton.textContent = "Сохранение..."
 		} else (

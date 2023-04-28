@@ -16,10 +16,10 @@ class Section {
 	};
 
 	renderItems(cards) {								// метод, отвечающий за отрисовку всех элементов
-			cards.forEach(item => {
-					this._renderer(item);
-			});
-	}
+		cards.forEach(item => {
+			this._renderer(item);
+		});
+	};
 
 };
 

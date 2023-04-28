@@ -48,7 +48,7 @@ class Card {
 		this._elementImage.alt = this._name;
 
 		this._like = this._element.querySelector('.element__button-like');
-		this._counter = this._element.querySelector('.elements__like-counter');
+		this._counter = this._element.querySelector('.element__like-counter');
 		this.countLikes(this._cardData);
 
 		if (this.userId !== this._cardData.owner._id) {

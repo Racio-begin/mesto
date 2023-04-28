@@ -28,7 +28,7 @@ import FormValidator from "../components/FormValidator.js";
 // Импортируем классы по работе с попапами
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import PopupDelete from "../components/PopupDelete.js";
+import PopupWithDeleteCard from "../components/PopupWithDeleteCard.js";
 
 // Испортируем класс Section
 import Section from "../components/Section.js";
@@ -61,7 +61,7 @@ Promise.all([api.getUserData(), api.getInitialCards()])
 		userInfo.setUserInfo(userData);
 		сardList.renderItems(cardsData);
 	})
-	.catch(console.log);
+	.catch(console.log('Промисы catch (index)'));
 
 // Отрисовать базовый набор карточек
 
@@ -95,7 +95,7 @@ const formPopupAddCard = new PopupWithForm(
 			})
 			.catch(console.log('Error: новая карточка не отправлена на сервер (index)'))
 			.finally(formPopupAddCard.preservationProcess(false))
-		// todo: почему выскакивает сообщение об ошибке
+		// todo: почему выскакивает сообщение об ошибке, хотя всё работает...
 	}
 );
 
@@ -111,9 +111,9 @@ const formPopupEditProfile = new PopupWithForm(
 			// .catch((err) => {
 			// 	console.log("Да харе уже")
 			// })
-			.catch(console.log('Error: новые данные о пользователя не отправлены на сервер'))
+			.catch(console.log('Error: новые данные о пользователе не отправлены на сервер (index)'))
 			.finally(formPopupEditProfile.preservationProcess(false))
-		}
+	}
 );
 
 const formPopupEditAvatar = new PopupWithForm(
@@ -147,7 +147,7 @@ function createCard(data) {
 				.then((res) => card.countLikes(res))
 				.catch(console.log('Error: лайк не пришел с сервера (index)'))
 		},
-		(card, cardId) => { popupDelete.open(card, cardId) }
+		(card, cardId) => { formPopupDelete.open(card, cardId) }
 	);
 
 	return card.generateCard();
@@ -155,16 +155,15 @@ function createCard(data) {
 
 //	Функция умного удаления карточки
 
-const popupDelete = new PopupDelete(
+const formPopupDelete = new PopupWithDeleteCard(
 	'.popup_type_delete-card',
 	(card, cardId) => {
 		api.deleteCard(cardId)
 			.then(() => {
 				card.handleDeleteCard();
-				popupDelete.close();
+				formPopupDelete.close();
 			})
 			.catch(console.log('Error: карточка не удалена с сервера (index)'));
-		// todo: почему выскакивает сообщение об ошибке
 	}
 );
 
@@ -208,7 +207,7 @@ formPopupEditAvatar.setEventListeners();
 formPopupAddCard.setEventListeners();
 formPopupEditProfile.setEventListeners();
 popupWithImage.setEventListeners();
-popupDelete.setEventListeners();
+formPopupDelete.setEventListeners();
 
 //* Валидация форм *//
 
