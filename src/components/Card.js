@@ -101,7 +101,7 @@ class Card {
 			this._counter.textContent = this._likes.length
 		};
 
-		
+
 		if (this.ifCardLiked()) {
 			this._like.classList.add('elements__button-like_active');
 		} else {

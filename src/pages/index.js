@@ -7,6 +7,7 @@ import './index.css';
 import {
 	validationConfig,
 	avatarEditButton,
+	formEditAvatar,
 	formEditProfile,
 	popupOpenButtonEdit,
 	nameInput,
@@ -64,7 +65,7 @@ Promise.all([api.getUserData(), api.getInitialCards()])
 	// .catch(console.log('Промисы catch (index)'));
 	.catch((err) => {
 		console.log(err, 'Промисы catch (index)'); // выведем ошибку в консоль
-	})
+	});
 
 // Отрисовать базовый набор карточек
 
@@ -100,7 +101,6 @@ const formPopupAddCard = new PopupWithForm(
 				console.log(err, 'Error: новая карточка не отправлена на сервер (index)');
 			})
 			.finally(() => formPopupAddCard.toggleSaveStatus(false))
-		// todo: почему выскакивает сообщение об ошибке, хотя всё работает...
 	}
 );
 
@@ -132,7 +132,7 @@ const formPopupEditAvatar = new PopupWithForm(
 			.catch((err) => {
 				console.log(err, 'Error: новый аватар пользователя не отправлен на сервер (index)');
 			})
-			.finally( () => formPopupEditAvatar.toggleSaveStatus(false))
+			.finally(() => formPopupEditAvatar.toggleSaveStatus(false))
 	})
 
 //	Функция создания карточки
@@ -163,7 +163,7 @@ function createCard(data) {
 	return card.generateCard();
 };
 
-//	Функция умного удаления карточки
+//	Функция "умного" удаления карточки
 
 const formPopupDelete = new PopupWithDeleteCard(
 	'.popup_type_delete-card',
@@ -234,6 +234,6 @@ validatorAddCard.enableValidation();
 
 //*	Тест - проверка связи с сервером	*//
 
-api.getInitialCards().then(console.log);
+// api.getInitialCards().then(console.log);
 
-api.getUserData().then(console.log);
+// api.getUserData().then(console.log);
