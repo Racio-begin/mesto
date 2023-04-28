@@ -3,7 +3,8 @@
   text-align: center;
   justify-content: space-between;
   margin: 0;
-  padding: 3px 20px 25px;
+  /* padding: 3px 20px 25px; */
+  padding: 20px 20px 25px;
   box-sizing: content-box;
   align-items: center;
 }

@@ -190,6 +190,6 @@ validatorAddCard.enableValidation();
 
 //*	Тест - проверка связи с сервером	*//
 
-api.getInitialCards().then(console.log);
+// api.getInitialCards().then(console.log);
 
-api.getUserData().then(console.log);
+// api.getUserData().then(console.log);
