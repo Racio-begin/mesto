@@ -42,9 +42,8 @@ class Api {
 			.then((res) => {
 				if (res.ok) {
 					return res.json();
-				} else {
-					return Promise.reject('Error: новые данные о пользователя не отправлены на сервер');
 				}
+					return Promise.reject('Error: новые данные о пользователя не отправлены на сервер');
 			});
 	}
 
@@ -112,9 +111,8 @@ class Api {
 			.then((res) => {
 				if (res.ok) {
 					return res.json();
-				} else {
-					return Promise.reject('Error: новый аватарпользователя не отправлен на сервер');
 				}
+					return Promise.reject('Error: новый аватар пользователя не отправлен на сервер');
 			});
 	};
 

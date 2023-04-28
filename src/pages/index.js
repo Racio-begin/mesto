@@ -87,12 +87,14 @@ const popupWithImage = new PopupWithImage('.popup_type_zoom-image');
 const formPopupAddCard = new PopupWithForm(
 	'.popup_type_add-card',
 	(data) => {
+		formPopupAddCard.preservationProcess(true);
 		api.sendingCard(data['title'], data['link'])
 			.then((result) => {
 				сardList.addItemBeginning(createCard(result));
 				formPopupAddCard.close();
 			})
 			.catch(console.log('Error: новая карточка не отправлена на сервер (index)'))
+			.finally(formPopupAddCard.preservationProcess(false))
 		// todo: почему выскакивает сообщение об ошибке
 	}
 );
@@ -100,24 +102,31 @@ const formPopupAddCard = new PopupWithForm(
 const formPopupEditProfile = new PopupWithForm(
 	'.popup_type_edit-profile',
 	(userData) => {
+		formPopupEditProfile.preservationProcess(true);
 		api.updateUserData(userData)
 			.then((data) => {
 				userInfo.setUserInfo(data);
 				formPopupEditProfile.close()
 			})
-			.catch(console.log('Error: новые данные о пользователя не отправлены на сервер (index)'))
-	}
+			// .catch((err) => {
+			// 	console.log("Да харе уже")
+			// })
+			.catch(console.log('Error: новые данные о пользователя не отправлены на сервер'))
+			.finally(formPopupEditProfile.preservationProcess(false))
+		}
 );
 
 const formPopupEditAvatar = new PopupWithForm(
 	'.popup_type_edit-avatar',
 	(data) => {
+		formPopupEditAvatar.preservationProcess(true);
 		api.updateUserAvatar(data)
 			.then((res) => {
 				userInfo.setUserInfo(res)
 				formPopupEditAvatar.close()
 			})
-			.catch(console.log('Error: новый аватарпользователя не отправлен на сервер'))
+			.catch(console.log('Error: новый аватар пользователя не отправлен на сервер (index)'))
+			.finally(formPopupEditAvatar.preservationProcess(false))
 	})
 
 //	Функция создания карточки
@@ -167,8 +176,8 @@ const popupDelete = new PopupDelete(
 avatarEditButton.addEventListener('click', () => {
 	formPopupEditAvatar.open();
 
-	// validatorEditAvatar.hideAllInputErrors();
-	// validatorEditAvatar.disableSubmitButton();
+	validatorEditAvatar.hideAllInputErrors();
+	validatorEditAvatar.disableSubmitButton();
 });
 
 // Открыть (закрыть) popup профиля
@@ -203,11 +212,11 @@ popupDelete.setEventListeners();
 
 //* Валидация форм *//
 
-// const validatorEditAvatar = new FormValidator(validationConfig, formEditAvatar);
+const validatorEditAvatar = new FormValidator(validationConfig, formEditAvatar);
 const validatorEditProfile = new FormValidator(validationConfig, formEditProfile);
 const validatorAddCard = new FormValidator(validationConfig, formAddCard);
 
-// validatorEditAvatar.enableValidation();
+validatorEditAvatar.enableValidation();
 validatorEditProfile.enableValidation();
 validatorAddCard.enableValidation();
 

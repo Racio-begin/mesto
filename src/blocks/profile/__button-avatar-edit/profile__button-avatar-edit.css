@@ -37,3 +37,9 @@
 .profile__button-avatar-edit:hover::after {
 	opacity: 1;
 }
+
+@media screen and (max-width: 1070px) {
+	.profile__button-avatar-edit {
+		margin: 25px;
+	}
+}
