@@ -4,17 +4,21 @@ class Api {
 		this._headers = config.headers;
 	};
 
+	_getResponseData(res) {
+		if (res.ok) {
+			return res.json();
+		}
+		return Promise.reject(`Ошибка: ${res.status}`);
+	};
+
 	getInitialCards() {
 		return fetch(`${this._url}/cards`, {
 			method: "GET",
 			headers: this._headers
 		})
-			.then(res => {
-				if (res.ok) {
-					return res.json()
-				}
-				return Promise.reject('Error: набор карточек с сервера не получен');
-			})
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 	getUserData() {
@@ -22,12 +26,9 @@ class Api {
 			method: "GET",
 			headers: this._headers
 		})
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				}
-				return Promise.reject('Error: данные о пользователе с сервера не получены');
-			});
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 	updateUserData(userData) {
@@ -39,12 +40,9 @@ class Api {
 				about: userData["description"]
 			})
 		})
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				}
-				return Promise.reject('Error: новые данные о пользователе не отправлены на сервер');
-			});
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 	sendingCard(name, link) {
@@ -53,12 +51,9 @@ class Api {
 			headers: this._headers,
 			body: JSON.stringify({ name, link }),
 		})
-			.then(res => {
-				if (res.ok) {
-					return res.json()
-				}
-				return Promise.reject('Error: новая карточка не отправлена на сервер');
-			})
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 	likeCard(cardId) {
@@ -66,12 +61,9 @@ class Api {
 			method: "PUT",
 			headers: this._headers
 		})
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				}
-				return Promise.reject('Error: лайк не отправлен на сервер');
-			});
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 	unlikeCard(cardId) {
@@ -79,12 +71,9 @@ class Api {
 			method: "DELETE",
 			headers: this._headers
 		})
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				}
-				return Promise.reject('Error: лайк не пришел с сервера');
-			});
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 	deleteCard(cardId) {
@@ -92,12 +81,9 @@ class Api {
 			method: "DELETE",
 			headers: this._headers
 		})
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				}
-				return Promise.reject('Error: карточка не удалена с сервера');
-			});
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 	updateUserAvatar(data) {
@@ -108,12 +94,9 @@ class Api {
 				avatar: data["avatar"]
 			})
 		})
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				}
-				return Promise.reject('Error: новый аватар пользователя не отправлен на сервер');
-			});
+			.then((res) =>
+				this._getResponseData(res)
+			)
 	};
 
 };

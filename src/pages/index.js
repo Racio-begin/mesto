@@ -62,9 +62,8 @@ Promise.all([api.getUserData(), api.getInitialCards()])
 		userInfo.setUserInfo(userData);
 		сardList.renderItems(cardsData);
 	})
-	// .catch(console.log('Промисы catch (index)'));
 	.catch((err) => {
-		console.log(err, 'Промисы catch (index)'); // выведем ошибку в консоль
+		console.log(err, 'Промисы catch (index)');
 	});
 
 // Отрисовать базовый набор карточек
@@ -95,12 +94,14 @@ const formPopupAddCard = new PopupWithForm(
 		api.sendingCard(data['title'], data['link'])
 			.then((result) => {
 				сardList.addItemBeginning(createCard(result));
-				formPopupAddCard.close();
+				setTimeout(() => formPopupAddCard.close(),800);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новая карточка не отправлена на сервер (index)');
 			})
-			.finally(() => formPopupAddCard.toggleSaveStatus(false))
+			.finally(() => {
+				setTimeout(() => formPopupAddCard.toggleSaveStatus(false),800);
+			})
 	}
 );
 
@@ -111,12 +112,14 @@ const formPopupEditProfile = new PopupWithForm(
 		api.updateUserData(userData)
 			.then((data) => {
 				userInfo.setUserInfo(data);
-				formPopupEditProfile.close()
+				setTimeout(() => formPopupEditProfile.close(),800);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новые данные о пользователе не отправлены на сервер (index)');
 			})
-			.finally(() => formPopupEditProfile.toggleSaveStatus(false))
+			.finally(() => {
+				setTimeout(() => formPopupEditProfile.toggleSaveStatus(false),800);
+			})
 	}
 );
 
@@ -127,12 +130,14 @@ const formPopupEditAvatar = new PopupWithForm(
 		api.updateUserAvatar(data)
 			.then((res) => {
 				userInfo.setUserInfo(res)
-				formPopupEditAvatar.close()
+				setTimeout(() => formPopupEditAvatar.close(),800);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новый аватар пользователя не отправлен на сервер (index)');
 			})
-			.finally(() => formPopupEditAvatar.toggleSaveStatus(false))
+			.finally(() => {
+				setTimeout(() => formPopupEditAvatar.toggleSaveStatus(false),800);
+			})
 	})
 
 //	Функция создания карточки
@@ -154,7 +159,7 @@ function createCard(data) {
 			api.unlikeCard(cardId)
 				.then((res) => card.countLikes(res))
 				.catch((err) => {
-					console.log(err, 'Error: лайк не пришел с сервера (index)');
+					console.log(err, 'Error: лайк не отменен на сервере (index)');
 				})
 		},
 		(card, cardId) => { formPopupDelete.open(card, cardId) }
@@ -193,9 +198,13 @@ avatarEditButton.addEventListener('click', () => {
 
 // Открыть (закрыть) popup профиля
 
+
+
 popupOpenButtonEdit.addEventListener('click', () => {
-	nameInput.value = userInfo.getUserInfo().name;
-	jobInput.value = userInfo.getUserInfo().about;
+	
+	const userData = userInfo.getUserInfo();
+	nameInput.value = userData.name;
+	jobInput.value = userData.about;
 
 	formPopupEditProfile.open();
 
