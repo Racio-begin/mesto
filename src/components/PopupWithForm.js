@@ -36,9 +36,10 @@ class PopupWithForm extends Popup {
 		});
 	};
 
-	toggleSaveStatus(status) {	// Запускаем UX при сабмите у всех форм
+	toggleSaveStatus(status, text) {	// Запускаем UX при сабмите у всех форм
 		if (status) {
-			this._submitButton.textContent = "Сохранение..."
+			// this._submitButton.textContent = "Сохранение..."
+			this._submitButton.textContent = text
 		} else (
 			this._submitButton.textContent = this._defaultText)
 	};

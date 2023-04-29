@@ -90,17 +90,22 @@ const popupWithImage = new PopupWithImage('.popup_type_zoom-image');
 const formPopupAddCard = new PopupWithForm(
 	'.popup_type_add-card',
 	(data) => {
-		formPopupAddCard.toggleSaveStatus(true);
+		formPopupAddCard.toggleSaveStatus(true, "Сохранение...");
+		validatorAddCard.disableSubmitButton();
 		api.sendingCard(data['title'], data['link'])
 			.then((result) => {
 				сardList.addItemBeginning(createCard(result));
-				setTimeout(() => formPopupAddCard.close(), 800);
+				setTimeout(() => formPopupAddCard.close(), 1000);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новая карточка не отправлена на сервер (index)');
+				formPopupAddCard.toggleSaveStatus(true, "Ошибка запроса!");
 			})
 			.finally(() => {
-				setTimeout(() => formPopupAddCard.toggleSaveStatus(false), 800);
+				setTimeout(() => {
+					formPopupAddCard.toggleSaveStatus(false);
+					validatorAddCard._enableSubmitButton();
+				}, 1500);
 			})
 	}
 );
@@ -108,17 +113,22 @@ const formPopupAddCard = new PopupWithForm(
 const formPopupEditProfile = new PopupWithForm(
 	'.popup_type_edit-profile',
 	(userData) => {
-		formPopupEditProfile.toggleSaveStatus(true);
+		formPopupEditProfile.toggleSaveStatus(true, "Сохранение...");
+		validatorEditProfile.disableSubmitButton();
 		api.updateUserData(userData)
 			.then((data) => {
 				userInfo.setUserInfo(data);
-				setTimeout(() => formPopupEditProfile.close(), 800);
+				setTimeout(() => formPopupEditProfile.close(), 1000);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новые данные о пользователе не отправлены на сервер (index)');
+				formPopupEditProfile.toggleSaveStatus(true, "Ошибка запроса!");
 			})
 			.finally(() => {
-				setTimeout(() => formPopupEditProfile.toggleSaveStatus(false), 800);
+				setTimeout(() => {
+					formPopupEditProfile.toggleSaveStatus(false);
+					validatorEditProfile._enableSubmitButton();
+				}, 1500);
 			})
 	}
 );
@@ -126,17 +136,22 @@ const formPopupEditProfile = new PopupWithForm(
 const formPopupEditAvatar = new PopupWithForm(
 	'.popup_type_edit-avatar',
 	(data) => {
-		formPopupEditAvatar.toggleSaveStatus(true);
+		formPopupEditAvatar.toggleSaveStatus(true, "Сохранение...");
+		validatorEditAvatar.disableSubmitButton();
 		api.updateUserAvatar(data)
 			.then((res) => {
 				userInfo.setUserInfo(res)
-				setTimeout(() => formPopupEditAvatar.close(), 800);
+				setTimeout(() => formPopupEditAvatar.close(), 1000);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новый аватар пользователя не отправлен на сервер (index)');
+				formPopupEditAvatar.toggleSaveStatus(true, "Ошибка запроса!");
 			})
 			.finally(() => {
-				setTimeout(() => formPopupEditAvatar.toggleSaveStatus(false), 800);
+				setTimeout(() => {
+					formPopupEditAvatar.toggleSaveStatus(false);
+					validatorEditAvatar._enableSubmitButton();
+				}, 1500);
 			})
 	}
 );
@@ -175,6 +190,7 @@ const formPopupDelete = new PopupWithDeleteCard(
 	'.popup_type_delete-card',
 	(card, cardId) => {
 		api.deleteCard(cardId)
+
 			.then(() => {
 				card.handleDeleteCard();
 				formPopupDelete.close();
