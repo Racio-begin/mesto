@@ -1,7 +1,7 @@
 {
 	"name": "mesto",
-	"version": "1.0.0",
-	"description": "![Превью: Жак-Ив Кусто](https://github.com/Racio-begin/mesto/blob/main/src/images/mesto_preview.png)",
+	"version": "1.1.0",
+	"description": "Данный проект представляет собой одностраничный сайт с профилем пользователя и секцией с карточками, где представлены красивейшие места России.",
 	"main": "index.js",
 	"scripts": {
 		"build": "webpack --mode production",

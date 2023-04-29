@@ -80,13 +80,13 @@ class Card {
 		this._element = null;
 	};
 
-	ifCardLiked() {
+	_ifCardLiked() {
 		return this._likes.some(item => item._id === this.userId);
 	};
 
 	_handleLikeCard() {
 		// this._likeCardButton.classList.toggle('elements__button-like_active');
-		if (this.ifCardLiked()) {
+		if (this._ifCardLiked()) {
 			this._handleUnlike(this._cardId)
 		} else {
 			this._handleLike(this._cardId)
@@ -102,7 +102,7 @@ class Card {
 		};
 
 
-		if (this.ifCardLiked()) {
+		if (this._ifCardLiked()) {
 			this._like.classList.add('elements__button-like_active');
 		} else {
 			this._like.classList.remove('elements__button-like_active');

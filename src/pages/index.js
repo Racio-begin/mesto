@@ -94,13 +94,13 @@ const formPopupAddCard = new PopupWithForm(
 		api.sendingCard(data['title'], data['link'])
 			.then((result) => {
 				сardList.addItemBeginning(createCard(result));
-				setTimeout(() => formPopupAddCard.close(),800);
+				setTimeout(() => formPopupAddCard.close(), 800);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новая карточка не отправлена на сервер (index)');
 			})
 			.finally(() => {
-				setTimeout(() => formPopupAddCard.toggleSaveStatus(false),800);
+				setTimeout(() => formPopupAddCard.toggleSaveStatus(false), 800);
 			})
 	}
 );
@@ -112,13 +112,13 @@ const formPopupEditProfile = new PopupWithForm(
 		api.updateUserData(userData)
 			.then((data) => {
 				userInfo.setUserInfo(data);
-				setTimeout(() => formPopupEditProfile.close(),800);
+				setTimeout(() => formPopupEditProfile.close(), 800);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новые данные о пользователе не отправлены на сервер (index)');
 			})
 			.finally(() => {
-				setTimeout(() => formPopupEditProfile.toggleSaveStatus(false),800);
+				setTimeout(() => formPopupEditProfile.toggleSaveStatus(false), 800);
 			})
 	}
 );
@@ -130,15 +130,16 @@ const formPopupEditAvatar = new PopupWithForm(
 		api.updateUserAvatar(data)
 			.then((res) => {
 				userInfo.setUserInfo(res)
-				setTimeout(() => formPopupEditAvatar.close(),800);
+				setTimeout(() => formPopupEditAvatar.close(), 800);
 			})
 			.catch((err) => {
 				console.log(err, 'Error: новый аватар пользователя не отправлен на сервер (index)');
 			})
 			.finally(() => {
-				setTimeout(() => formPopupEditAvatar.toggleSaveStatus(false),800);
+				setTimeout(() => formPopupEditAvatar.toggleSaveStatus(false), 800);
 			})
-	})
+	}
+);
 
 //	Функция создания карточки
 
@@ -201,7 +202,7 @@ avatarEditButton.addEventListener('click', () => {
 
 
 popupOpenButtonEdit.addEventListener('click', () => {
-	
+
 	const userData = userInfo.getUserInfo();
 	nameInput.value = userData.name;
 	jobInput.value = userData.about;
